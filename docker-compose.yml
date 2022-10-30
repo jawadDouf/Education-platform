@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5433:5433"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD : J@1ssword!
+      POSTGRES_DB : simplon_clone
+    volumes:
+      - 'db_volume:/var/lib/postgresql/data'
+  server:
+    image: tomcat:10.0
+    ports:
+      - "8002:8080"
+    restart: always
+    volumes:
+      - './target/Simplon_clone_fb-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/Simplon_clone_fb-1.0-SNAPSHOT.war'
+volumes:
+  db_volume:
+    driver: local
+

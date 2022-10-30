@@ -8,9 +8,11 @@ target/
 **.idea/jarRepositories.xml
 **.idea/compiler.xml
 **.idea/libraries/
-**.iws
-**.iml
-**.ipr
+*.iws
+*.iml
+*.ipr
+*.idea/
+**docker-compose.yml/
 
 ### Eclipse ###
 .apt_generated
