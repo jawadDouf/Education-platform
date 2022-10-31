@@ -1,4 +1,4 @@
-package com.example.simplon_clone_fb.servlets;
+package com.example.simplon_clone_fb.Servlets;
 
 import java.io.*;
 

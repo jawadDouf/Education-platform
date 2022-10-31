@@ -12,7 +12,6 @@ target/
 *.iml
 *.ipr
 *.idea/
-docker-compose.yml
 .idea/
 
 ### Eclipse ###
@@ -39,3 +38,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/

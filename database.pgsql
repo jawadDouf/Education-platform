@@ -1,11 +1,11 @@
 CREATE TABLE promotions(
-   id int primary key not null SERIAL,
+   id SERIAL primary key not null ,
    nom varchar(255) not null ,
    size int not null
 );
 CREATE Type status as enum('Adiministrateur','Formateur','Apprenant');
 CREATE TABLE acteurs(
-    id int not null SERIAL primary key ,
+    id SERIAL not null primary key ,
     nom varchar(255) not null ,
     prenom varchar(255) not null,
     email varchar(255) not null,
