@@ -12,7 +12,8 @@ target/
 *.iml
 *.ipr
 *.idea/
-**docker-compose.yml/
+docker-compose.yml
+.idea
 
 ### Eclipse ###
 .apt_generated
