@@ -13,7 +13,7 @@ target/
 *.ipr
 *.idea/
 docker-compose.yml
-.idea
+.idea/
 
 ### Eclipse ###
 .apt_generated
