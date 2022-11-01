@@ -1,20 +1,48 @@
-CREATE TABLE promotions(
-   id SERIAL primary key not null ,
-   nom varchar(255) not null ,
-   size int not null
-);
-CREATE Type status as enum('Adiministrateur','Formateur','Apprenant');
-CREATE TABLE acteurs(
+USE education_platform;
+
+CREATE TABLE administrateurs(
     id SERIAL not null primary key ,
     nom varchar(255) not null ,
     prenom varchar(255) not null,
     email varchar(255) not null,
-    password varchar(255) not null,
-    statu status,
-    promo_id int default 0
+    password varchar(255) not null
 );
 
-ALTER TABLE acteurs ADD CONSTRAINT fk_promotion FOREIGN KEY (promo_id) REFERENCES promotions(id);
+CREATE TABLE formateurs(
+    id SERIAL not null primary key ,
+    nom varchar(255) not null ,
+    prenom varchar(255) not null,
+    email varchar(255) not null,
+    password varchar(255) not null
+);
+
+CREATE TABLE apprenants(
+    id SERIAL not null primary key ,
+    nom varchar(255) not null ,
+    prenom varchar(255) not null,
+    email varchar(255) not null,
+    password varchar(255) not null
+);
+
+CREATE TABLE promotions(
+   id SERIAL primary key not null ,
+   nom varchar(255) not null ,
+   size int not null,
+   formateur_id int not null
+);
+
+ALTER TABLE promotions ADD CONSTRAINT fk_formateur FOREIGN KEY (formateur_id) REFERENCES promotions(id);
+
+CREATE TABLE promo_apprenant(
+  id SERIAL not null primary key,
+  apprenant_id int not null,
+  promo_id int not null,
+  year DATE
+);
+
+ALTER TABLE promo_apprenant ADD CONSTRAINT fk_apprenant FOREIGN KEY (apprenant_id) REFERENCES apprenants(id);
+
+ALTER TABLE promo_apprenant ADD CONSTRAINT fk_promo  FOREIGN KEY (promo_id) REFERENCES promotions(id);
 
 CREATE TABLE briefs (
     id SERIAL primary key ,
