@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "briefs", schema = "public", catalog = "simplon_clone")
+@Table(name = "briefs", schema = "public", catalog = "education_platform")
 public class BriefsModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -35,9 +35,6 @@ public class BriefsModel {
     @Basic
     @Column(name = "promo_id")
     private int promoId;
-    @ManyToOne
-    @JoinColumn(name = "promo_id", referencedColumnName = "id", nullable = false)
-    private PromotionsModel promotionsByPromoId;
 
     public int getId() {
         return id;
@@ -143,13 +140,5 @@ public class BriefsModel {
         result = 31 * result + (dateFin != null ? dateFin.hashCode() : 0);
         result = 31 * result + promoId;
         return result;
-    }
-
-    public PromotionsModel getPromotionsByPromoId() {
-        return promotionsByPromoId;
-    }
-
-    public void setPromotionsByPromoId(PromotionsModel promotionsByPromoId) {
-        this.promotionsByPromoId = promotionsByPromoId;
     }
 }

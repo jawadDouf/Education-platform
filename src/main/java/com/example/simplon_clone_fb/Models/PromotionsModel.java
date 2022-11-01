@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "promotions", schema = "public", catalog = "simplon_clone")
+@Table(name = "promotions", schema = "public", catalog = "education_platform")
 public class PromotionsModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -17,10 +17,16 @@ public class PromotionsModel {
     @Basic
     @Column(name = "size")
     private int size;
+    @Basic
+    @Column(name = "formateur_id")
+    private int formateurId;
     @OneToMany(mappedBy = "promotionsByPromoId")
-    private Collection<ActeursModel> acteursById;
-    @OneToMany(mappedBy = "promotionsByPromoId")
-    private Collection<BriefsModel> briefsById;
+    private Collection<PromoApprenantModel> promoApprenantsById;
+    @ManyToOne
+    @JoinColumn(name = "formateur_id", referencedColumnName = "id", nullable = false)
+    private PromotionsModel promotionsByFormateurId;
+    @OneToMany(mappedBy = "promotionsByFormateurId")
+    private Collection<PromotionsModel> promotionsById;
 
     public int getId() {
         return id;
@@ -46,6 +52,14 @@ public class PromotionsModel {
         this.size = size;
     }
 
+    public int getFormateurId() {
+        return formateurId;
+    }
+
+    public void setFormateurId(int formateurId) {
+        this.formateurId = formateurId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,6 +69,7 @@ public class PromotionsModel {
 
         if (id != that.id) return false;
         if (size != that.size) return false;
+        if (formateurId != that.formateurId) return false;
         if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
 
         return true;
@@ -65,22 +80,31 @@ public class PromotionsModel {
         int result = id;
         result = 31 * result + (nom != null ? nom.hashCode() : 0);
         result = 31 * result + size;
+        result = 31 * result + formateurId;
         return result;
     }
 
-    public Collection<ActeursModel> getActeursById() {
-        return acteursById;
+    public Collection<PromoApprenantModel> getPromoApprenantsById() {
+        return promoApprenantsById;
     }
 
-    public void setActeursById(Collection<ActeursModel> acteursById) {
-        this.acteursById = acteursById;
+    public void setPromoApprenantsById(Collection<PromoApprenantModel> promoApprenantsById) {
+        this.promoApprenantsById = promoApprenantsById;
     }
 
-    public Collection<BriefsModel> getBriefsById() {
-        return briefsById;
+    public PromotionsModel getPromotionsByFormateurId() {
+        return promotionsByFormateurId;
     }
 
-    public void setBriefsById(Collection<BriefsModel> briefsById) {
-        this.briefsById = briefsById;
+    public void setPromotionsByFormateurId(PromotionsModel promotionsByFormateurId) {
+        this.promotionsByFormateurId = promotionsByFormateurId;
+    }
+
+    public Collection<PromotionsModel> getPromotionsById() {
+        return promotionsById;
+    }
+
+    public void setPromotionsById(Collection<PromotionsModel> promotionsById) {
+        this.promotionsById = promotionsById;
     }
 }

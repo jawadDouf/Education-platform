@@ -8,8 +8,14 @@
         <class>com.example.simplon_clone_fb.Models.ActeursModel</class>
         <class>com.example.simplon_clone_fb.Models.BriefsModel</class>
         <class>com.example.simplon_clone_fb.Models.PromotionsModel</class>
+        <class>com.example.simplon_clone_fb.Models.AdministrateurModel</class>
+        <class>com.example.simplon_clone_fb.Models.ApprenantsModel</class>
+        <class>com.example.simplon_clone_fb.Models.BriefsModel</class>
+        <class>com.example.simplon_clone_fb.Models.FormateursModel</class>
+        <class>com.example.simplon_clone_fb.Models.PromoApprenantModel</class>
+        <class>com.example.simplon_clone_fb.Models.PromotionsModel</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/simplon_clone"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/education_platform"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.connection.username" value="postgres"/>
             <property name="hibernate.connection.password" value="J@1ssword!"/>

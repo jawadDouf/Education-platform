@@ -9,34 +9,36 @@ import jakarta.persistence.Persistence;
 public class entityUtility {
 
 
-    static EntityManager entityManager;
-    static EntityTransaction entityTransaction;
+    public static EntityManager entityManager;
+    public static EntityTransaction entityTransaction;
 
-    //Initialize the Entities only once (in the first object itialization
-    static {
-        try{
+
+
+    //return an entity manager
+    public static EntityManager getEntityManager(){
+        if(entityManager == null){
             //initialize the entity manager factory
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
-            //Initialise the entityManager
             entityManager = entityManagerFactory.createEntityManager();
-            //initialise the transaction
-            entityTransaction = entityManager.getTransaction();
-
-        }catch (Exception e){
-            //Handle the exception
-            System.out.println("Something went wrong with the entity classes innitialization");
+            return entityManager;
+        }else {
+            return entityManager;
         }
     }
 
-    //return an entity manager
-    static public EntityManager getEntityManager(){
-
-        return entityManager;
-    }
-
     //return an entity transaction
-    static public EntityTransaction getEntityTransaction(){
+    public static EntityTransaction getEntityTransaction(){
+         if(entityTransaction == null){
 
-        return entityTransaction;
+             //check if we already have intialise the entity manager
+             entityManager = entityUtility.getEntityManager();
+             //Initialise the entityManager
+             entityTransaction = entityManager.getTransaction();
+             return entityTransaction;
+         }else{
+
+             return entityTransaction;
+         }
+
     }
 }
