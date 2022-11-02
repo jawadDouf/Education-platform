@@ -13,8 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     @Override
-    public void init() throws ServletException {
-        super.init();
+    public void init(){
         System.out.println("Inside the login servlet");
     }
 
@@ -33,12 +32,15 @@ public class LoginServlet extends HttpServlet {
             if(obj instanceof AdministrateurModel){
                 session.setAttribute("id", ((AdministrateurModel) obj).getId());
                 session.setAttribute("role","Admin");
+
             } else if (obj instanceof FormateursModel) {
                 session.setAttribute("id", ((FormateursModel) obj).getId());
                 session.setAttribute("role","Formateur");
+
             }else{
                 session.setAttribute("id",((ApprenantsModel) obj).getId());
                 session.setAttribute("role","Apprenant");
+
             }
 
         }else {

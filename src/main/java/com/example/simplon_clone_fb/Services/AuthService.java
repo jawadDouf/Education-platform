@@ -8,7 +8,7 @@ package com.example.simplon_clone_fb.Services;
 import com.example.simplon_clone_fb.Dao.daoAdministrateurs;
 import com.example.simplon_clone_fb.Dao.daoApprenant;
 import com.example.simplon_clone_fb.Dao.daoFormateur;
-import com.example.simplon_clone_fb.Models.AdministrateurModel;
+
 
 
 public class AuthService {
