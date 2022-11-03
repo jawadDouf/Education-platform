@@ -32,16 +32,18 @@ public class LoginServlet extends HttpServlet {
             if(obj instanceof AdministrateurModel){
                 session.setAttribute("id", ((AdministrateurModel) obj).getId());
                 session.setAttribute("role","Admin");
-                RequestDispatcher rq = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher rq = request.getRequestDispatcher("pages/adminDashboard.jsp");
                 rq.forward(request,response);
             } else if (obj instanceof FormateursModel) {
                 session.setAttribute("id", ((FormateursModel) obj).getId());
                 session.setAttribute("role","Formateur");
-
+                RequestDispatcher rq = request.getRequestDispatcher("pages/formateurDashboard.jsp");
+                rq.forward(request,response);
             }else{
                 session.setAttribute("id",((ApprenantsModel) obj).getId());
                 session.setAttribute("role","Apprenant");
-
+                RequestDispatcher rq = request.getRequestDispatcher("pages/apprenantDashboard.jsp");
+                rq.forward(request,response);
             }
 
         }else {

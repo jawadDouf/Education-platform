@@ -27,9 +27,8 @@ public class daoAdministrateurs extends databaseAccessObject<AdministrateurModel
     public AdministrateurModel getOneElementByEmailPassword(String email, String password) {
        try{
 
-           EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
-           EntityManager entityManager = entityManagerFactory.createEntityManager();
-
+           //Start the transaction
+           EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
            //Create the query and return the element from database
            TypedQuery<AdministrateurModel> query = entityManager.createQuery("SELECT Admin FROM AdministrateurModel Admin WHERE Admin.email = :email AND Admin.password = :password",
                    AdministrateurModel.class);
