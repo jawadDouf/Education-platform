@@ -2,6 +2,7 @@ package com.example.simplon_clone_fb.Dao;
 
 import Models.ApprenantsModel;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -20,10 +21,11 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
     @Override
     public ApprenantsModel getOneElementByEmailPassword(String email, String password) {
         try{
+
             //Start the transaction
-            entityUtility.getEntityTransaction().begin();
+            EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
             //Create the query and return the element from database
-            TypedQuery<ApprenantsModel> query = entityUtility.getEntityManager().createQuery("SELECT Apprenant FROM " +
+            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT Apprenant FROM " +
                             "ApprenantsModel Apprenant " +
                             "WHERE Apprenant.email = :email " +
                             "AND Apprenant.password = :password",
@@ -33,8 +35,7 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
             query.setParameter("password",password);
             //execute the query
             ApprenantsModel apprenantsModel = query.getSingleResult();
-            //Commit the transaction
-            entityUtility.getEntityTransaction().commit();
+
             return apprenantsModel;
         }catch (Exception e){
             System.out.println(e);

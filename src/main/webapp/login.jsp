@@ -1,10 +1,9 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: YC
-  Date: 11/2/2022
-  Time: 10:55 AM
-  To change this template use File | Settings | File Templates.
+ Login Pqge
+
+
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,6 +11,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+<%
+   HttpSession httpSession = request.getSession();
+   try {
+       int userId = (int) httpSession.getAttribute("id");
+       if(httpSession.getAttribute("role").equals("Admin")){
+%>
+      <jsp:forward page="pages/adminDashboard.jsp" />
+<%
+      }else if(httpSession.getAttribute("role").equals("Formateur")){
+%>
+      <jsp:forward page="pages/formateurDashboard.jsp" />
+<%
+     }else if(httpSession.getAttribute("role").equals("Apprenant")){
+%>
+    <jsp:forward page="pages/apprenantDashboard.jsp" />
+<%
+        }}catch (Exception e){
+       System.out.println("in here");
+   }
+%>
 <div class="bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 h-screen w-screen">
     <div class="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
         <div class="flex rounded-lg shadow-lg  sm:w-3/4 lg:w-1/3 bg-white sm:mx-0" style="height: 500px">
