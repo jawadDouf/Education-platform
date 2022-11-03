@@ -11,7 +11,7 @@ import com.example.simplon_clone_fb.Dao.daoFormateur;
 
 
 
-public class AuthService {
+public class AuthServices {
 
     public Object login(String email,String password,String emailLog){
         //Create the new daoAdministrateur object

@@ -4,7 +4,7 @@ package com.example.simplon_clone_fb.Servlets;
 import Models.AdministrateurModel;
 import Models.ApprenantsModel;
 import Models.FormateursModel;
-import com.example.simplon_clone_fb.Services.AuthService;
+import com.example.simplon_clone_fb.Services.AuthServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Initialise the authService and session
-        AuthService authService = new AuthService();
+        AuthServices authService = new AuthServices();
         HttpSession session = request.getSession();
         //modify in the email sended by the user
         String emailLog = request.getParameter("email").split("@")[1];
@@ -32,18 +32,15 @@ public class LoginServlet extends HttpServlet {
             if(obj instanceof AdministrateurModel){
                 session.setAttribute("id", ((AdministrateurModel) obj).getId());
                 session.setAttribute("role","Admin");
-                RequestDispatcher rq = request.getRequestDispatcher("pages/adminDashboard.jsp");
-                rq.forward(request,response);
+                response.sendRedirect("pages/adminDashboard.jsp");
             } else if (obj instanceof FormateursModel) {
                 session.setAttribute("id", ((FormateursModel) obj).getId());
                 session.setAttribute("role","Formateur");
-                RequestDispatcher rq = request.getRequestDispatcher("pages/formateurDashboard.jsp");
-                rq.forward(request,response);
+                response.sendRedirect("pages/formateurDashboard.jsp");
             }else{
                 session.setAttribute("id",((ApprenantsModel) obj).getId());
                 session.setAttribute("role","Apprenant");
-                RequestDispatcher rq = request.getRequestDispatcher("pages/apprenantDashboard.jsp");
-                rq.forward(request,response);
+                response.sendRedirect("pages/apprenantDashboard.jsp");
             }
 
         }else {
