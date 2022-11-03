@@ -3,11 +3,11 @@ services:
   db:
     image: postgres:15-alpine
     ports:
-      - "5433:5433"
+      - "5432:5433"
     restart: always
     environment:
       POSTGRES_PASSWORD : J@1ssword!
-      POSTGRES_DB : simplon_clone
+      POSTGRES_DB : education_platform
     volumes:
       - 'db_volume:/var/lib/postgresql/data'
   server:

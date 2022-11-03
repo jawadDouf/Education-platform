@@ -1,4 +1,4 @@
-package com.example.simplon_clone_fb.Models;
+package Models;
 
 import jakarta.persistence.*;
 
@@ -23,7 +23,7 @@ public class PromotionsModel {
     @OneToMany(mappedBy = "promotionsByPromoId")
     private Collection<PromoApprenantModel> promoApprenantsById;
     @ManyToOne
-    @JoinColumn(name = "formateur_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "formateur_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private PromotionsModel promotionsByFormateurId;
     @OneToMany(mappedBy = "promotionsByFormateurId")
     private Collection<PromotionsModel> promotionsById;
