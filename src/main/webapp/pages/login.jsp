@@ -15,7 +15,7 @@
 <div class="bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 h-screen w-screen">
     <div class="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
         <div class="flex rounded-lg shadow-lg  sm:w-3/4 lg:w-1/3 bg-white sm:mx-0" style="height: 500px">
-            <form class="flex flex-col items-center flex-1 h-full justify-center" action="LoginServlet" method="POST">
+            <form class="flex flex-col items-center flex-1 h-full justify-center" action="LoginServlet" method="post">
                 <div class="text-center">
                     <h2 class="mt-6 text-3xl font-bold text-gray-900">
                         Welcome Back!
@@ -51,15 +51,16 @@
                     </div>
                 </div>
                 <div class="w-[80%] mt-5">
-                    <button type="submit" class="w-full flex justify-center bg-gradient-to-r from-indigo-500 to-blue-600  hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-3  rounded-full  font-semibold  shadow-lg cursor-pointer transition ease-in duration-500">
-                        Sign in
-                    </button>
+                    <input type="submit" class="w-full flex justify-center bg-gradient-to-r from-indigo-500 to-blue-600  hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-3  rounded-full  font-semibold  shadow-lg cursor-pointer transition ease-in duration-500">
+
+
                 </div>
                 <p class="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
                     <span> Before entering to your account !!</span>
                 <p  class="text-indigo-400 hover:text-blue-500 no-underline hover:underline cursor-pointer transition ease-in duration-300">Some Quote
                 </p>
                 </p>
+
             </form>
 
         </div>

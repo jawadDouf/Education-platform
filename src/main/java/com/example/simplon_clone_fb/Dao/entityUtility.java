@@ -16,29 +16,24 @@ public class entityUtility {
 
     //return an entity manager
     public static EntityManager getEntityManager(){
-        if(entityManager == null){
+
             //initialize the entity manager factory
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
             entityManager = entityManagerFactory.createEntityManager();
             return entityManager;
-        }else {
-            return entityManager;
-        }
+
     }
 
     //return an entity transaction
     public static EntityTransaction getEntityTransaction(){
-         if(entityTransaction == null){
+
 
              //check if we already have intialise the entity manager
              entityManager = entityUtility.getEntityManager();
              //Initialise the entityManager
              entityTransaction = entityManager.getTransaction();
              return entityTransaction;
-         }else{
 
-             return entityTransaction;
-         }
 
     }
 }

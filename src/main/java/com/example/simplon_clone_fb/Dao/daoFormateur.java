@@ -1,7 +1,7 @@
 package com.example.simplon_clone_fb.Dao;
 
-import com.example.simplon_clone_fb.Models.AdministrateurModel;
-import com.example.simplon_clone_fb.Models.FormateursModel;
+import Models.FormateursModel;
+
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
