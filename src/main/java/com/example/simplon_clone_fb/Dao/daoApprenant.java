@@ -8,10 +8,7 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
-    @Override
-    List<ApprenantsModel> selectAll() {
-        return null;
-    }
+
 
     @Override
     ApprenantsModel getOneElementById(int id) {

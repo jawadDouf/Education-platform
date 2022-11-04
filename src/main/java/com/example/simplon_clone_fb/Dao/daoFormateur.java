@@ -8,10 +8,7 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class daoFormateur extends databaseAccessObject<FormateursModel>{
-    @Override
-    List selectAll() {
-        return null;
-    }
+
 
     @Override
     FormateursModel getOneElementById(int id) {

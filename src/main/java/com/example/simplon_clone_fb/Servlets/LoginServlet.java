@@ -25,22 +25,25 @@ public class LoginServlet extends HttpServlet {
         AuthServices authService = new AuthServices();
         HttpSession session = request.getSession();
         //modify in the email sended by the user
-        String emailLog = request.getParameter("email").split("@")[1];
+        String emailLog =  request.getParameter("email").split("@")[1];
         Object obj = authService.login(request.getParameter("email"),request.getParameter("password"),emailLog);
         //Set the conditions in the email adresse
         if(obj != null){
             if(obj instanceof AdministrateurModel){
                 session.setAttribute("id", ((AdministrateurModel) obj).getId());
                 session.setAttribute("role","Admin");
-                response.sendRedirect("pages/adminDashboard.jsp");
+                request.getRequestDispatcher("AdminServlet?field=formateurs").forward(request,response);
+                //response.sendRedirect("pages/adminDashboard.jsp");
             } else if (obj instanceof FormateursModel) {
                 session.setAttribute("id", ((FormateursModel) obj).getId());
                 session.setAttribute("role","Formateur");
-                response.sendRedirect("pages/formateurDashboard.jsp");
+                request.getRequestDispatcher("pages/formateurDashboard.jsp").forward(request,response);
+                //response.sendRedirect("pages/formateurDashboard.jsp");
             }else{
                 session.setAttribute("id",((ApprenantsModel) obj).getId());
                 session.setAttribute("role","Apprenant");
-                response.sendRedirect("pages/apprenantDashboard.jsp");
+                request.getRequestDispatcher("pages/apprenantDashboard.jsp").forward(request,response);
+                //response.sendRedirect("pages/apprenantDashboard.jsp");
             }
 
         }else {
