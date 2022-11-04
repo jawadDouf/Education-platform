@@ -15,21 +15,12 @@
    HttpSession httpSession = request.getSession();
    try {
        int userId = (int) httpSession.getAttribute("id");
-       if(httpSession.getAttribute("role").equals("Admin")){
-%>
-      <jsp:forward page="pages/adminDashboard.jsp" />
-<%
-      }else if(httpSession.getAttribute("role").equals("Formateur")){
-%>
-      <jsp:forward page="pages/formateurDashboard.jsp" />
-<%
-     }else if(httpSession.getAttribute("role").equals("Apprenant")){
-%>
-    <jsp:forward page="pages/apprenantDashboard.jsp" />
-<%
-        }}catch (Exception e){
+       if(httpSession.getAttribute("role").equals("Admin")) response.sendRedirect("\"adminDashboard.jsp\"");
+       else if(httpSession.getAttribute("role").equals("Formateur"))response.sendRedirect("pages/formateurDashboard.jsp" );
+       else if(httpSession.getAttribute("role").equals("Apprenant"))response.sendRedirect("pages/apprenantDashboard.jsp");
+   }catch (Exception e){
        System.out.println("in here");
-   }
+           }
 %>
 <div class="bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 h-screen w-screen">
     <div class="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">

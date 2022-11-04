@@ -13,10 +13,7 @@ import java.util.List;
 public class daoAdministrateurs extends databaseAccessObject<AdministrateurModel> {
 
     //Intialise the entityManager and entityTransaction class
-    @Override
-    public List<AdministrateurModel> selectAll() {
-        return null;
-    }
+
 
     @Override
     public AdministrateurModel getOneElementById(int id) {
@@ -27,7 +24,7 @@ public class daoAdministrateurs extends databaseAccessObject<AdministrateurModel
     public AdministrateurModel getOneElementByEmailPassword(String email, String password) {
        try{
 
-           //Start the transaction
+           //Start the entity
            EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
            //Create the query and return the element from database
            TypedQuery<AdministrateurModel> query = entityManager.createQuery("SELECT Admin FROM AdministrateurModel Admin WHERE Admin.email = :email AND Admin.password = :password",
