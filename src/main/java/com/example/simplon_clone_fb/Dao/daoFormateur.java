@@ -40,8 +40,5 @@ public class daoFormateur extends databaseAccessObject<FormateursModel>{
         return null;
     }
 
-    @Override
-    void addOneElement() {
 
-    }
 }

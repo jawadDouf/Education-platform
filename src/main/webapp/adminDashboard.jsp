@@ -14,6 +14,10 @@
 <head>
     <title>administration</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body>
 
@@ -25,13 +29,13 @@
         <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="navbar-cta">
             <ul class="flex flex-col bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:bg-white ">
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-[18px]" aria-current="page">Home</a>
+                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-[18px]" aria-current="page">Formateurs</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">About</a>
+                    <a href=AdminServlet?field=apprenants" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">Apprenants</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">Services</a>
+                    <a href="AdminServlet?field=poromotions" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">Promotions</a>
                 </li>
 
             </ul>
@@ -41,7 +45,7 @@
 
 <a href="AdminServlet?field=apprenants">Access apprenants</a>
  <a href="AdminServlet?field=poromotions">Access Promotions</a>
-
+<section class="flex justify-center mt-10">
      <%
          HttpSession session1 = request.getSession();
          List list = (List) session1.getAttribute("AdminData");
@@ -49,23 +53,8 @@
      %>
     <%= list.get(0) %>
      <%
-      }else if(list.get(0).getClass().equals(FormateursModel.class)){
+      }else{
           for (int i = 0;i<list.size();i++) {%>
-      <%= ((FormateursModel) list.get(i)).getEmail() %>
-     <%};%>
-     <%}else if(list.get(0).getClass().equals(ApprenantsModel.class)){
-         for (int i = 0;i<list.size();i++) {%>
-     <%= ((ApprenantsModel) list.get(i)).getEmail() %>
-     <%}};%>
-<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-
-
-<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-
-
-<section class="flex justify-center mt-10">
     <div class="w-[98%] rounded">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
@@ -104,17 +93,21 @@
 
                     <tr>
                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                            /argon/
+                            <%= ((FormateursModel) list.get(i)).getNom() %>
                         </th>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                            4,569
+                            <%= ((FormateursModel) list.get(i)).getPrenom() %>
                         </td>
                         <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            340
+                            <%= ((FormateursModel) list.get(i)).getEmail() %>
                         </td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                            46,53%
+                            -
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <i class="fas fa-user-pen"></i>
+                            <i class="fas fa-trash"></i>
+
                         </td>
                     </tr>
                     </tbody>
@@ -123,6 +116,10 @@
             </div>
         </div>
     </div>
+     <%}};%>
+
+
+
 
 </section>
 </body>

@@ -2,6 +2,7 @@ package com.example.simplon_clone_fb.Services;
 
 import Models.ApprenantsModel;
 import Models.FormateursModel;
+import Models.PromotionsModel;
 import com.example.simplon_clone_fb.Dao.daoApprenant;
 import com.example.simplon_clone_fb.Dao.daoFormateur;
 
@@ -24,8 +25,18 @@ public class AdminServices {
         }else {
                  return null;
         }
-
-
     };
 
+    //Adding an actor or promotion to the database
+   public boolean addUser(Object obj){
+       if (obj instanceof FormateursModel){
+           return new daoFormateur().addOneElement((FormateursModel) obj);
+       } else if (obj instanceof ApprenantsModel) {
+           return new daoApprenant().addOneElement((ApprenantsModel) obj);
+       }else if(obj instanceof PromotionsModel){
+           return true;
+       }else {
+           return false;
+       }
+   }
 }

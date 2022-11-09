@@ -32,7 +32,19 @@ abstract class  databaseAccessObject<T> {
 
    abstract T getOneElementByEmailPassword(String email,String password);
     // add element in table
-   abstract void addOneElement();
+    public boolean addOneElement(T object){
+        EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(object);
+            entityManager.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    return false;
+    };
 
 
 
