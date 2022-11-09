@@ -40,8 +40,5 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
         return null;
     }
 
-    @Override
-    void addOneElement() {
 
-    }
 }

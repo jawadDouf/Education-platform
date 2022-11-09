@@ -45,8 +45,6 @@ public class daoAdministrateurs extends databaseAccessObject<AdministrateurModel
         return null;
     }
 
-    @Override
-    public void addOneElement() {
-    }
+
 
 }
