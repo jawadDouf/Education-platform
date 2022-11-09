@@ -28,15 +28,27 @@ public class AdminServices {
     };
 
     //Adding an actor or promotion to the database
-   public boolean addUser(Object obj){
-       if (obj instanceof FormateursModel){
-           return new daoFormateur().addOneElement((FormateursModel) obj);
-       } else if (obj instanceof ApprenantsModel) {
-           return new daoApprenant().addOneElement((ApprenantsModel) obj);
-       }else if(obj instanceof PromotionsModel){
-           return true;
+   public boolean addUser(String acteur,String nom,String prenom,String email,String password){
+       if (acteur.equalsIgnoreCase("formateurs")){
+           FormateursModel formateur = new FormateursModel();
+           formateur.setNom(nom);
+           formateur.setPrenom(prenom);
+           formateur.setEmail(email);
+           formateur.setPassword(password);
+           return new daoFormateur().addOneElement(formateur);
+       } else if (acteur.equalsIgnoreCase("apprenants")) {
+           ApprenantsModel apprenant = new ApprenantsModel();
+           apprenant.setNom(nom);
+           apprenant.setPrenom(prenom);
+           apprenant.setEmail(email);
+           apprenant.setPassword(password);
+           return new daoApprenant().addOneElement(apprenant);
        }else {
            return false;
        }
+   }
+
+   public boolean addPromotion(){
+       return true;
    }
 }

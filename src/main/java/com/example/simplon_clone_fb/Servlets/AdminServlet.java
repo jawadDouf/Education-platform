@@ -40,9 +40,24 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Services Classes that we going to use
+        AdminServices adminServices = new AdminServices();
+        //Initilise the session
         HttpSession session = request.getSession();
-        List<FormateursModel> formateurs = new AdminServices().getAll("formateurs");
-        session.setAttribute("AdminData",formateurs);
-        response.sendRedirect("adminDashboard.jsp");
+        //Logic
+        if(request.getParameter("field").equalsIgnoreCase("formateurs")){
+            if(request.getParameter("op").equalsIgnoreCase("read")){
+                List<FormateursModel> formateurs = new AdminServices().getAll("formateurs");
+                session.setAttribute("AdminData",formateurs);
+                response.sendRedirect("adminDashboard.jsp");
+            } else if (request.getParameter("op").equalsIgnoreCase("add")) {
+                  adminServices.addUser(request.getParameter("field"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"),request.getParameter("password"));
+                  request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
+            }
+
+        }else {
+
+        }
+
     }
 }

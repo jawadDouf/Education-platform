@@ -34,7 +34,6 @@ abstract class  databaseAccessObject<T> {
     // add element in table
     public boolean addOneElement(T object){
         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
-
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(object);
