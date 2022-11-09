@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             if(obj instanceof AdministrateurModel){
                 session.setAttribute("id", ((AdministrateurModel) obj).getId());
                 session.setAttribute("role","Admin");
-                request.getRequestDispatcher("AdminServlet?field=formateurs").forward(request,response);
+                request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
                 //response.sendRedirect("pages/adminDashboard.jsp");
             } else if (obj instanceof FormateursModel) {
                 session.setAttribute("id", ((FormateursModel) obj).getId());

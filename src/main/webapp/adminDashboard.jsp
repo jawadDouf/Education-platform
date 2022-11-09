@@ -29,13 +29,13 @@
         <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="navbar-cta">
             <ul class="flex flex-col bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:bg-white ">
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-[18px]" aria-current="page">Formateurs</a>
+                    <a href="AdminServlet?field=formateurs&op=read" class="block py-2 pr-4 pl-3 text-gray-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-[18px]" aria-current="page">Formateurs</a>
                 </li>
                 <li>
-                    <a href=AdminServlet?field=apprenants" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">Apprenants</a>
+                    <a href="AdminServlet?field=apprenants?op=read" eadclass="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">Apprenants</a>
                 </li>
                 <li>
-                    <a href="AdminServlet?field=poromotions" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">Promotions</a>
+                    <a href="AdminServlet?field=poromotions&op=read" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-[18px]">Promotions</a>
                 </li>
 
             </ul>
@@ -43,8 +43,6 @@
     </div>
 </nav>
 
-<a href="AdminServlet?field=apprenants">Access apprenants</a>
- <a href="AdminServlet?field=poromotions">Access Promotions</a>
 <section class="flex justify-center mt-10">
      <%
          HttpSession session1 = request.getSession();
@@ -52,9 +50,8 @@
          if(list.get(0).getClass().equals(PromotionsModel.class)){
      %>
     <%= list.get(0) %>
-     <%
-      }else{
-          for (int i = 0;i<list.size();i++) {%>
+    <%
+    }else{ %>
     <div class="w-[98%] rounded">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
@@ -91,6 +88,7 @@
 
                     <tbody>
 
+                        <% for (int i = 0;i<list.size();i++) {%>
                     <tr>
                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
                             <%= ((FormateursModel) list.get(i)).getNom() %>
@@ -110,14 +108,15 @@
 
                         </td>
                     </tr>
+                    <% }%>
                     </tbody>
 
                 </table>
             </div>
         </div>
     </div>
-     <%}};%>
-     <jsp:include page="viewComponents/forms/addTeacherForm.jsp"/>
+     <%};%>
+     <jsp:include page="addTeacherForm.jsp"/>
 
 
 

@@ -15,7 +15,7 @@
    HttpSession httpSession = request.getSession();
    try {
        int userId = (int) httpSession.getAttribute("id");
-       if(httpSession.getAttribute("role").equals("Admin")) response.sendRedirect("\"adminDashboard.jsp\"");
+       if(httpSession.getAttribute("role").equals("Admin")) response.sendRedirect("adminDashboard.jsp");
        else if(httpSession.getAttribute("role").equals("Formateur"))response.sendRedirect("pages/formateurDashboard.jsp" );
        else if(httpSession.getAttribute("role").equals("Apprenant"))response.sendRedirect("pages/apprenantDashboard.jsp");
    }catch (Exception e){

@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "formateurs", schema = "public", catalog = "education_platform")
 public class FormateursModel {
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -21,6 +23,12 @@ public class FormateursModel {
     @Basic
     @Column(name = "password")
     private String password;
+
+
+
+
+
+
 
     public int getId() {
         return id;
