@@ -5,6 +5,7 @@ import Models.FormateursModel;
 import Models.PromotionsModel;
 import com.example.simplon_clone_fb.Dao.daoApprenant;
 import com.example.simplon_clone_fb.Dao.daoFormateur;
+import com.example.simplon_clone_fb.Dao.daoPromotions;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +16,7 @@ public class AdminServices {
     //This Method brings all the actors , Formateurs,apprenants or promotions
     public List getAll(String actor){
         System.out.println("AdminServices.getAll");
-        if(actor.equalsIgnoreCase("apprenant")){
+        if(actor.equalsIgnoreCase("apprenants")){
              List<ApprenantsModel> listApprenant = new daoApprenant().selectAll(ApprenantsModel.class);
              return listApprenant;
         } else if (actor.equalsIgnoreCase("formateurs")) {
@@ -23,7 +24,9 @@ public class AdminServices {
             List<FormateursModel> listFormaterus = new daoFormateur().selectAll(FormateursModel.class);
             return listFormaterus;
         }else {
-                 return null;
+            System.out.println("in here with list promotions");
+            List<PromotionsModel> listPromotions = new daoPromotions().selectAll(PromotionsModel.class);
+            return listPromotions;
         }
     };
 
@@ -48,7 +51,11 @@ public class AdminServices {
        }
    }
 
-   public boolean addPromotion(){
-       return true;
+   public boolean addPromotion(String name,String size){
+       System.out.println("AdminServices.addPromotion");
+       PromotionsModel promotion = new PromotionsModel();
+       promotion.setNom(name);
+       promotion.setSize(Integer.parseInt(size));
+       return new daoPromotions().addOneElement(promotion);
    }
 }
