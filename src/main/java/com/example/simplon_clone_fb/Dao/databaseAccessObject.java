@@ -31,7 +31,7 @@ abstract class  databaseAccessObject<T> {
     // Select element by A column String
 
    abstract T getOneElementByEmailPassword(String email,String password);
-    // add element in table
+    // add element in a table
     public boolean addOneElement(T object){
         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
         try {
@@ -45,6 +45,18 @@ abstract class  databaseAccessObject<T> {
     return false;
     };
 
+    public boolean update(T object) {
+        EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.merge(object);
+            entityManager.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 
 
 }

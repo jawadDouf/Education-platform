@@ -53,25 +53,23 @@ public class AdminServlet extends HttpServlet {
             } else if (request.getParameter("op").equalsIgnoreCase("add")) {
                   adminServices.addUser(request.getParameter("field"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"),request.getParameter("password"));
                   request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
+            }else if (request.getParameter("op").equalsIgnoreCase("assign")) {
+                adminServices.assignPromotion(request.getParameter("id"),request.getParameter("name"),request.getParameter("size"),request.getParameter("id_formateur"));
+                request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
             }
 
         }else if(request.getParameter("field").equalsIgnoreCase("apprenants")){
-            if(request.getParameter("op").equalsIgnoreCase("read")){
-                List<ApprenantsModel> apprenants = new AdminServices().getAll("apprenants");
-                session.setAttribute("AdminData",apprenants);
-                response.sendRedirect("view/subPages/LearnersTable.jsp");
-            } else if (request.getParameter("op").equalsIgnoreCase("add")) {
+             if (request.getParameter("op").equalsIgnoreCase("add")) {
                 adminServices.addUser(request.getParameter("field"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"),request.getParameter("password"));
                 request.getRequestDispatcher("AdminServlet?field=apprenants&op=read").forward(request,response);
             }
         }else if(request.getParameter("field").equalsIgnoreCase("promotions")){
-            if(request.getParameter("op").equalsIgnoreCase("read")){
-                List<PromotionsModel> promotions = new AdminServices().getAll("promotions");
-                session.setAttribute("AdminData",promotions);
-                response.sendRedirect("view/subPages/PromotionsTable.jsp");
-            } else if (request.getParameter("op").equalsIgnoreCase("add")) {
+            if (request.getParameter("op").equalsIgnoreCase("add")) {
                 System.out.println("AdminServlet.doPost");
                 adminServices.addPromotion(request.getParameter("name"),request.getParameter("size"));
+                request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
+            }else if (request.getParameter("op").equalsIgnoreCase("assign")) {
+                adminServices.assignPromotion(request.getParameter("id"),request.getParameter("name"),request.getParameter("size"),request.getParameter("id_formateur"));
                 request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
             }
         }

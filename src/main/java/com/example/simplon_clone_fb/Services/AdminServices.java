@@ -56,6 +56,18 @@ public class AdminServices {
        PromotionsModel promotion = new PromotionsModel();
        promotion.setNom(name);
        promotion.setSize(Integer.parseInt(size));
+       promotion.setFormateurId(1);
        return new daoPromotions().addOneElement(promotion);
+   }
+
+
+   public boolean assignPromotion(String id_promo,String name,String size,String id_formateur){
+       System.out.println("AdminServices.assignPromotion");
+       PromotionsModel promotion = new PromotionsModel();
+       promotion.setId(Integer.parseInt(id_promo));
+       promotion.setNom(name);
+       promotion.setSize(Integer.parseInt(size));
+       promotion.setFormateurId(Integer.parseInt(id_formateur));
+       return new daoPromotions().update(promotion);
    }
 }
