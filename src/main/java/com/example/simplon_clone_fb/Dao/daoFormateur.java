@@ -1,11 +1,8 @@
 package com.example.simplon_clone_fb.Dao;
 
-import Models.FormateursModel;
-
+import com.example.simplon_clone_fb.Models.FormateursModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-
-import java.util.List;
 
 public class daoFormateur extends databaseAccessObject<FormateursModel>{
 

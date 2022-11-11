@@ -1,9 +1,9 @@
 package com.example.simplon_clone_fb.Servlets;
 
 
-import Models.AdministrateurModel;
-import Models.ApprenantsModel;
-import Models.FormateursModel;
+import com.example.simplon_clone_fb.Models.AdministrateurModel;
+import com.example.simplon_clone_fb.Models.ApprenantsModel;
+import com.example.simplon_clone_fb.Models.FormateursModel;
 import com.example.simplon_clone_fb.Services.AuthServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

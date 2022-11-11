@@ -1,7 +1,6 @@
 package com.example.simplon_clone_fb.Dao;
 
-import Models.FormateursModel;
-import Models.PromotionsModel;
+import com.example.simplon_clone_fb.Models.PromotionsModel;
 
 public class daoPromotions extends databaseAccessObject<PromotionsModel>{
     @Override

@@ -1,12 +1,12 @@
-package Models;
+package com.example.simplon_clone_fb.Models;
 
 import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
 @Table(name = "formateurs", schema = "public", catalog = "education_platform")
 public class FormateursModel {
-
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -23,12 +23,8 @@ public class FormateursModel {
     @Basic
     @Column(name = "password")
     private String password;
-
-
-
-
-
-
+    @OneToMany(mappedBy = "formateursByFormateurId")
+    private Collection<PromotionsModel> promotionsById;
 
     public int getId() {
         return id;
@@ -94,5 +90,13 @@ public class FormateursModel {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    public Collection<PromotionsModel> getPromotionsById() {
+        return promotionsById;
+    }
+
+    public void setPromotionsById(Collection<PromotionsModel> promotionsById) {
+        this.promotionsById = promotionsById;
     }
 }

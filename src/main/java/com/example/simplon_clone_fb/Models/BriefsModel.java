@@ -1,4 +1,4 @@
-package Models;
+package com.example.simplon_clone_fb.Models;
 
 import jakarta.persistence.*;
 

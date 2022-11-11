@@ -1,4 +1,4 @@
-package Models;
+package com.example.simplon_clone_fb.Models;
 
 import jakarta.persistence.*;
 
@@ -21,10 +21,10 @@ public class PromoApprenantModel {
     @Column(name = "year")
     private Date year;
     @ManyToOne
-    @JoinColumn(name = "apprenant_id", referencedColumnName = "id", nullable = false,insertable = false, updatable = false )
+    @JoinColumn(name = "apprenant_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private ApprenantsModel apprenantsByApprenantId;
     @ManyToOne
-    @JoinColumn(name = "promo_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "promo_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private PromotionsModel promotionsByPromoId;
 
     public int getId() {

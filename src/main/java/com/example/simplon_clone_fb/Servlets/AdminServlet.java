@@ -1,9 +1,8 @@
 package com.example.simplon_clone_fb.Servlets;
 
-import Models.AdministrateurModel;
-import Models.ApprenantsModel;
-import Models.FormateursModel;
-import Models.PromotionsModel;
+import com.example.simplon_clone_fb.Models.ApprenantsModel;
+import com.example.simplon_clone_fb.Models.FormateursModel;
+import com.example.simplon_clone_fb.Models.PromotionsModel;
 import com.example.simplon_clone_fb.Services.AdminServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -54,7 +53,8 @@ public class AdminServlet extends HttpServlet {
                   adminServices.addUser(request.getParameter("field"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"),request.getParameter("password"));
                   request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
             }else if (request.getParameter("op").equalsIgnoreCase("assign")) {
-                adminServices.assignPromotion(request.getParameter("id"),request.getParameter("name"),request.getParameter("size"),request.getParameter("id_formateur"));
+                String[] promotionData = request.getParameter("promotion").split(" ");
+                adminServices.assignPromotion(promotionData[0],promotionData[1],promotionData[2],promotionData[3]);
                 request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
             }
 

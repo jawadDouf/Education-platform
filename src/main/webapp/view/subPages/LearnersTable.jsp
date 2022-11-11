@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="Models.PromotionsModel" %>
-<%@ page import="Models.FormateursModel" %>
-<%@ page import="Models.ApprenantsModel" %><%--
+<%@ page import="com.example.simplon_clone_fb.Models.PromotionsModel" %>
+<%@ page import="com.example.simplon_clone_fb.Models.FormateursModel" %>
+<%@ page import="com.example.simplon_clone_fb.Models.ApprenantsModel" %><%--
   Created by IntelliJ IDEA.
   User: YC
   Date: 11/9/2022

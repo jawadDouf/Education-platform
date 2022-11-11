@@ -2,13 +2,9 @@ package com.example.simplon_clone_fb.Dao;
 
 
 
-import Models.AdministrateurModel;
+import com.example.simplon_clone_fb.Models.AdministrateurModel;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
-
-import java.util.List;
 
 public class daoAdministrateurs extends databaseAccessObject<AdministrateurModel> {
 

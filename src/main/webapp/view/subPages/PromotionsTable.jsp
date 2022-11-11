@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="Models.PromotionsModel" %>
-<%@ page import="Models.FormateursModel" %><%--
+<%@ page import="com.example.simplon_clone_fb.Models.PromotionsModel" %>
+<%@ page import="com.example.simplon_clone_fb.Models.FormateursModel" %><%--
   Created by IntelliJ IDEA.
   User: YC
   Date: 11/9/2022
@@ -48,6 +48,8 @@
                         <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                             Modify
                         </th>
+                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        </th>
                     </tr>
                     </thead>
 
@@ -67,6 +69,9 @@
                             <i class="fas fa-trash"></i>
 
                         </td>
+                        <td id="<%=((PromotionsModel) list.get(i)).getId() %>" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <button class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="assign_form_button">Assign</button>
+                        </td>
                     </tr>
                     <% }%>
                     </tbody>
@@ -77,6 +82,7 @@
     </div>
 </section>
 <jsp:include page="../../viewComponents/forms/addPromotionForm.jsp"/>
+<jsp:include page="../../viewComponents/forms/assignTeacherPromoForm.jsp" />
 <script src="../../jsModules/events.js"></script>
 </body>
 </html>

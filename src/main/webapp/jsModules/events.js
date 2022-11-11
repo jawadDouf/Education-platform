@@ -15,6 +15,7 @@ document.querySelectorAll("#assign_form_button").forEach((button)=>{
                 console.log("assign button clicked");
                 document.getElementById("assign_form_container").style.display = "block";
                 document.getElementById("overlay_2").style.display = "block";
+                document.getElementById("assign_form_container").setAttribute("data-user",button.parentElement.getAttribute("id"));
         })
 })
 // Shut down the assign forms
