@@ -4,12 +4,12 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     <persistence-unit name="persistence">
-        <class>Models.AdministrateurModel</class>
-        <class>Models.ApprenantsModel</class>
-        <class>Models.BriefsModel</class>
-        <class>Models.FormateursModel</class>
-        <class>Models.PromoApprenantModel</class>
-        <class>Models.PromotionsModel</class>
+        <class>com.example.simplon_clone_fb.Models.AdministrateurModel</class>
+        <class>com.example.simplon_clone_fb.Models.ApprenantsModel</class>
+        <class>com.example.simplon_clone_fb.Models.BriefsModel</class>
+        <class>com.example.simplon_clone_fb.Models.FormateursModel</class>
+        <class>com.example.simplon_clone_fb.Models.PromoApprenantModel</class>
+        <class>com.example.simplon_clone_fb.Models.PromotionsModel</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/education_platform"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>

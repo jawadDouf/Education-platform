@@ -1,11 +1,8 @@
 package com.example.simplon_clone_fb.Dao;
 
-import Models.ApprenantsModel;
-
+import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-
-import java.util.List;
 
 public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
 

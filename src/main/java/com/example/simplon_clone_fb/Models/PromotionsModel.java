@@ -1,4 +1,4 @@
-package Models;
+package com.example.simplon_clone_fb.Models;
 
 import jakarta.persistence.*;
 
@@ -23,10 +23,8 @@ public class PromotionsModel {
     @OneToMany(mappedBy = "promotionsByPromoId")
     private Collection<PromoApprenantModel> promoApprenantsById;
     @ManyToOne
-    @JoinColumn(name = "formateur_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private PromotionsModel promotionsByFormateurId;
-    @OneToMany(mappedBy = "promotionsByFormateurId")
-    private Collection<PromotionsModel> promotionsById;
+    @JoinColumn(name = "formateur_id", referencedColumnName = "id", nullable = false  ,insertable=false , updatable = false)
+    private FormateursModel formateursByFormateurId;
 
     public int getId() {
         return id;
@@ -92,19 +90,11 @@ public class PromotionsModel {
         this.promoApprenantsById = promoApprenantsById;
     }
 
-    public PromotionsModel getPromotionsByFormateurId() {
-        return promotionsByFormateurId;
+    public FormateursModel getFormateursByFormateurId() {
+        return formateursByFormateurId;
     }
 
-    public void setPromotionsByFormateurId(PromotionsModel promotionsByFormateurId) {
-        this.promotionsByFormateurId = promotionsByFormateurId;
-    }
-
-    public Collection<PromotionsModel> getPromotionsById() {
-        return promotionsById;
-    }
-
-    public void setPromotionsById(Collection<PromotionsModel> promotionsById) {
-        this.promotionsById = promotionsById;
+    public void setFormateursByFormateurId(FormateursModel formateursByFormateurId) {
+        this.formateursByFormateurId = formateursByFormateurId;
     }
 }

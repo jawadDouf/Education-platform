@@ -1,9 +1,8 @@
 package com.example.simplon_clone_fb.Servlets;
 
-import Models.AdministrateurModel;
-import Models.ApprenantsModel;
-import Models.FormateursModel;
-import Models.PromotionsModel;
+import com.example.simplon_clone_fb.Models.ApprenantsModel;
+import com.example.simplon_clone_fb.Models.FormateursModel;
+import com.example.simplon_clone_fb.Models.PromotionsModel;
 import com.example.simplon_clone_fb.Services.AdminServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -25,15 +24,15 @@ public class AdminServlet extends HttpServlet {
         if(request.getParameter("field").equals("formateurs")){
             List<FormateursModel> formateurs = new AdminServices().getAll("formateurs");
             session.setAttribute("AdminData",formateurs);
-            response.sendRedirect("adminDashboard.jsp");
+            response.sendRedirect("view/subPages/TeachersTable.jsp");
         }else if(request.getParameter("field").equals("apprenants")){
             List<ApprenantsModel> apprenants = new AdminServices().getAll("apprenants");
             session.setAttribute("AdminData",apprenants);
-            response.sendRedirect("adminDashboard.jsp");
-        }else{
-            List< PromotionsModel> promotions = new AdminServices().getAll("promotions");
+            response.sendRedirect("view/subPages/LearnersTable.jsp");
+        }else if(request.getParameter("field").equals("promotions")){
+            List<PromotionsModel> promotions = new AdminServices().getAll("promotions");
             session.setAttribute("AdminData",promotions);
-            response.sendRedirect("adminDashboard.jsp");
+            response.sendRedirect("view/subPages/PromotionsTable.jsp");
         }
 
     }
@@ -49,14 +48,30 @@ public class AdminServlet extends HttpServlet {
             if(request.getParameter("op").equalsIgnoreCase("read")){
                 List<FormateursModel> formateurs = new AdminServices().getAll("formateurs");
                 session.setAttribute("AdminData",formateurs);
-                response.sendRedirect("adminDashboard.jsp");
+                response.sendRedirect("view/subPages/TeachersTable.jsp");
             } else if (request.getParameter("op").equalsIgnoreCase("add")) {
                   adminServices.addUser(request.getParameter("field"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"),request.getParameter("password"));
                   request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
+            }else if (request.getParameter("op").equalsIgnoreCase("assign")) {
+                String[] promotionData = request.getParameter("promotion").split(" ");
+                adminServices.assignPromotion(promotionData[0],promotionData[1],promotionData[2],promotionData[3]);
+                request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
             }
 
-        }else {
-
+        }else if(request.getParameter("field").equalsIgnoreCase("apprenants")){
+             if (request.getParameter("op").equalsIgnoreCase("add")) {
+                adminServices.addUser(request.getParameter("field"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"),request.getParameter("password"));
+                request.getRequestDispatcher("AdminServlet?field=apprenants&op=read").forward(request,response);
+            }
+        }else if(request.getParameter("field").equalsIgnoreCase("promotions")){
+            if (request.getParameter("op").equalsIgnoreCase("add")) {
+                System.out.println("AdminServlet.doPost");
+                adminServices.addPromotion(request.getParameter("name"),request.getParameter("size"));
+                request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
+            }else if (request.getParameter("op").equalsIgnoreCase("assign")) {
+                adminServices.assignPromotion(request.getParameter("id"),request.getParameter("name"),request.getParameter("size"),request.getParameter("id_formateur"));
+                request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
+            }
         }
 
     }
