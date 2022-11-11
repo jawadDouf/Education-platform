@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>Administration</title>
+    <link rel="stylesheet" href="../../cssModules/index.css">
 </head>
 <body>
 
@@ -80,7 +81,7 @@
 
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="addingUserButton">Assign</button>
+                        <button class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="assign_form_button">Assign</button>
                     </td>
                 </tr>
                 <% }%>
@@ -92,6 +93,7 @@
 </div>
 </section>
     <jsp:include page="../../viewComponents/forms/addTeacherForm.jsp"/>
+    <jsp:include page="../../viewComponents/forms/assignPromoTeacherForm.jsp" />
 <script src="../../jsModules/events.js"></script>
 </body>
 </html>

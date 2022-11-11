@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>Administration</title>
+    <link rel="stylesheet" href="../../cssModules/index.css">
 </head>
 <body>
 

@@ -9,6 +9,7 @@
 <html>
 <head>
   <title>Title</title>
+  <link rel="stylesheet" href="../../cssModules/index.css">
 </head>
 <body>
 <div id="overlay" class="bg-[#808080] w-full h-screen absolute cursor-pointer top-0"></div>
