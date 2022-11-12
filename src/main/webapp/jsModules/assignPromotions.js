@@ -11,3 +11,4 @@ document.querySelectorAll("li").forEach((promotion)=>{
 
         })
 })
+

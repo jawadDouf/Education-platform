@@ -60,17 +60,16 @@
                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
                             <%= ((PromotionsModel) list.get(i)).getNom() %>
                         </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
                             <%= ((PromotionsModel) list.get(i)).getSize() %>
-                        </td>
-
+                        </th>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                             <i class="fas fa-user-pen"></i>
                             <i class="fas fa-trash"></i>
 
                         </td>
                         <td id="<%=((PromotionsModel) list.get(i)).getId() %>" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <button class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="assign_form_button">Assign</button>
+                            <button class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="assign_form_button2">Assign</button>
                         </td>
                     </tr>
                     <% }%>
@@ -83,6 +82,7 @@
 </section>
 <jsp:include page="../../viewComponents/forms/addPromotionForm.jsp"/>
 <jsp:include page="../../viewComponents/forms/assignTeacherPromoForm.jsp" />
+<script src="../../jsModules/events2.js"></script>
 <script src="../../jsModules/events.js"></script>
 </body>
 </html>

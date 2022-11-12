@@ -45,10 +45,12 @@ public class AdminServlet extends HttpServlet {
         HttpSession session = request.getSession();
         //Logic
         if(request.getParameter("field").equalsIgnoreCase("formateurs")){
+
             if(request.getParameter("op").equalsIgnoreCase("read")){
                 List<FormateursModel> formateurs = new AdminServices().getAll("formateurs");
                 session.setAttribute("AdminData",formateurs);
                 response.sendRedirect("view/subPages/TeachersTable.jsp");
+
             } else if (request.getParameter("op").equalsIgnoreCase("add")) {
                   adminServices.addUser(request.getParameter("field"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"),request.getParameter("password"));
                   request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
@@ -66,10 +68,14 @@ public class AdminServlet extends HttpServlet {
         }else if(request.getParameter("field").equalsIgnoreCase("promotions")){
             if (request.getParameter("op").equalsIgnoreCase("add")) {
                 System.out.println("AdminServlet.doPost");
-                adminServices.addPromotion(request.getParameter("name"),request.getParameter("size"));
-                request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
+                if (adminServices.addPromotion(request.getParameter("name"),request.getParameter("size"))) {
+                    request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
+                }else{
+                    request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
+                }
             }else if (request.getParameter("op").equalsIgnoreCase("assign")) {
-                adminServices.assignPromotion(request.getParameter("id"),request.getParameter("name"),request.getParameter("size"),request.getParameter("id_formateur"));
+                String[] promotionData = request.getParameter("promotion").split(" ");
+                adminServices.assignPromotion(promotionData[0],promotionData[1],promotionData[2],promotionData[3]);
                 request.getRequestDispatcher("AdminServlet?field=promotions&op=read").forward(request,response);
             }
         }

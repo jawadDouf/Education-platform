@@ -39,13 +39,13 @@
                     </svg>
                     </div>
                     <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">Email</label>
-                    <input class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500" type="" name="email">
+                    <input class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500" type="text" name="email">
                 </div>
                 <div class="mt-8 content-center w-[80%]">
                     <label class="ml-3 text-sm font-bold text-gray-700 tracking-wide">
                         Password
                     </label>
-                    <input class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="Enter your password" name="password">
+                    <input class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500" type="password" placeholder="Enter your password" name="password">
                 </div>
                 <div class="flex items-center justify-between w-[75%] mt-5">
                     <div class="flex items-center">
