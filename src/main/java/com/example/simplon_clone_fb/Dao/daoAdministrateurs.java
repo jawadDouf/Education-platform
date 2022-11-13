@@ -11,12 +11,7 @@ public class daoAdministrateurs extends databaseAccessObject<AdministrateurModel
     //Intialise the entityManager and entityTransaction class
 
 
-    @Override
-    public AdministrateurModel getOneElementById(int id) {
-        return null;
-    }
 
-    @Override
     public AdministrateurModel getOneElementByEmailPassword(String email, String password) {
        try{
 

@@ -1,9 +1,9 @@
 package com.example.simplon_clone_fb.Dao;
 
+import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 abstract class  databaseAccessObject<T> {
@@ -26,11 +26,20 @@ abstract class  databaseAccessObject<T> {
     };
 
      // select element by id
-    abstract T getOneElementById(int id);
+     public T getOneElementById(Class<T> objectClass,int id){
+         //Start the entity
+         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+         try{
 
-    // Select element by A column String
+             return entityManager.find(objectClass,id);
 
-   abstract T getOneElementByEmailPassword(String email,String password);
+         }catch (Exception e){
+             System.out.println(e.getMessage());
+         }
+         return null;
+     };
+
+
     // add element in a table
     public boolean addOneElement(T object){
         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
@@ -57,6 +66,7 @@ abstract class  databaseAccessObject<T> {
         }
         return false;
     }
+
 
 
 }

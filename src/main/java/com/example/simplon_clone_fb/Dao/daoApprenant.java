@@ -4,18 +4,14 @@ import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
 
 
-    @Override
-    ApprenantsModel getOneElementById(int id) {
-        return null;
-    }
 
-    @Override
+
+
     public ApprenantsModel getOneElementByEmailPassword(String email, String password) {
         try{
 
@@ -42,12 +38,12 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
 
     //select all learners by promotion and year
 
-    public List<ApprenantsModel> selectAll(int year, int promoId){
+    public List<ApprenantsModel> selectAllStudentsOfPromotion(String year, int promoId){
         try{
             //Start the transaction
             EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
             //Create the query and return the element from database
-            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a,b from ApprenantsModel a INNER JOIN a.promoApprenantsById b WHERE b.promoId = :promoId AND b.year = :year",ApprenantsModel.class);
+            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a,b from ApprenantsModel a JOIN a.promoApprenantsById b WHERE b.promoId = :promoId AND b.year = :year",ApprenantsModel.class);
 
             //Prepare the statement
             query.setParameter("promoId",promoId);
@@ -67,7 +63,7 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
             //Start the transaction
             EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
             //Create the query and return the element from database
-            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a  from ApprenantsModel a  LEFT JOIN a.promoApprenantsById b WHERE b.year = null",ApprenantsModel.class);
+            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a  from ApprenantsModel a LEFT JOIN a.promoApprenantsById b",ApprenantsModel.class);
 
             List<ApprenantsModel> apprenants = query.getResultList();
             return apprenants;
@@ -78,5 +74,6 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
 
 
     }
+
 
 }

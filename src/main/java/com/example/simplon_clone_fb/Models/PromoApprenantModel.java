@@ -19,7 +19,7 @@ public class PromoApprenantModel {
     private int promoId;
     @Basic
     @Column(name = "year")
-    private Date year;
+    private String year;
     @ManyToOne
     @JoinColumn(name = "apprenant_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private ApprenantsModel apprenantsByApprenantId;
@@ -51,11 +51,11 @@ public class PromoApprenantModel {
         this.promoId = promoId;
     }
 
-    public Date getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
