@@ -49,6 +49,7 @@
                             Add to your promo
                         </th>
 
+
                     </tr>
                     </thead>
 

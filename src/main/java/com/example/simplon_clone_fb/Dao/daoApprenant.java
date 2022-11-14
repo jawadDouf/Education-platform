@@ -43,13 +43,14 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
             //Start the transaction
             EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
             //Create the query and return the element from database
-            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a,b from ApprenantsModel a JOIN a.promoApprenantsById b WHERE b.promoId = :promoId AND b.year = :year",ApprenantsModel.class);
+            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a from ApprenantsModel a JOIN a.promoApprenantsById b WHERE b.promoId = :promoId",ApprenantsModel.class);
 
             //Prepare the statement
             query.setParameter("promoId",promoId);
-            query.setParameter("year",year);
 
             List<ApprenantsModel> apprenants = query.getResultList();
+
+            System.out.println(apprenants.get(0));
             return apprenants;
         }catch (Exception e){
             System.out.println(e);
@@ -63,8 +64,7 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
             //Start the transaction
             EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
             //Create the query and return the element from database
-            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a  from ApprenantsModel a LEFT JOIN a.promoApprenantsById b",ApprenantsModel.class);
-
+            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a  from ApprenantsModel a LEFT JOIN a.promoApprenantsById b WHERE b.id IS NULL",ApprenantsModel.class);
             List<ApprenantsModel> apprenants = query.getResultList();
             return apprenants;
         }catch (Exception e){

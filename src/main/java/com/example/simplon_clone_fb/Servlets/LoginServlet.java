@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("id", ((FormateursModel) obj).getId());
                 session.setAttribute("role","Formateur");
                 System.out.println(((FormateursModel) obj).getId());
-                request.getRequestDispatcher("TeacherServlet?field=apprenants&type=withoutpromo&op=read").forward(request,response);
+                request.getRequestDispatcher("TeacherServlet?field=apprenants&type=withpromo&op=read").forward(request,response);
                 //response.sendRedirect("pages/formateurDashboard.jsp");
             }else{
                 session.setAttribute("id",((ApprenantsModel) obj).getId());

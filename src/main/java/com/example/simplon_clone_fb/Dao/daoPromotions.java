@@ -11,7 +11,9 @@ public class daoPromotions extends databaseAccessObject<PromotionsModel>{
 
 
     public PromotionsModel selectPromotionOfTeacher(int teacherId){
+
         try{
+            System.out.println("daoPromotions.selectPromotionOfTeacher");
             //Start the transaction
             EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
             //Create the query and return the element from database

@@ -11,9 +11,12 @@ import java.util.List;
 public class TeacherServices {
 
     // get all students of a teacher
-    public List<ApprenantsModel> getAllTeacherStudents(String year,String teacherId){
+    public List<ApprenantsModel> getAllTeacherStudents(String year,Integer teacherId){
+        System.out.println("TeacherServices.getAllTeacherStudents");
         //get the promo of the teacher id
-        int promoId = new daoPromotions().selectPromotionOfTeacher(Integer.parseInt(teacherId)).getId();
+        System.out.println("id now is :" + teacherId);
+        int promoId = new daoPromotions().selectPromotionOfTeacher(teacherId).getId();
+        System.out.println(promoId);
         //return the students of that teacher
         return new daoApprenant().selectAllStudentsOfPromotion(year,promoId);
     }
@@ -25,12 +28,15 @@ public class TeacherServices {
     }
 
     //Add student to prom
-    public boolean addStudentToPromo(String studentId,String promoId,String year){
+    public boolean addStudentToPromo(String studentId,Integer teacherId){
+        //get the promo of the teacher id
+        System.out.println("id now is :" + teacherId);
+        int promoId = new daoPromotions().selectPromotionOfTeacher(teacherId).getId();
+        //assign promo to student
         PromoApprenantModel promoApprenantModel = new PromoApprenantModel();
         promoApprenantModel.setApprenantId(Integer.parseInt(studentId));
-        promoApprenantModel.setPromoId(Integer.parseInt(promoId));
-        promoApprenantModel.setYear(year);
+        promoApprenantModel.setPromoId(promoId);
+        promoApprenantModel.setYear("2022-2021");
         return new daoApprenantPromo().addOneElement(promoApprenantModel);
-
     }
 }

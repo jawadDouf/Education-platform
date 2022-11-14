@@ -1,6 +1,9 @@
 package com.example.simplon_clone_fb.Servlets;
 
 import com.example.simplon_clone_fb.Models.ApprenantsModel;
+import com.example.simplon_clone_fb.Models.FormateursModel;
+import com.example.simplon_clone_fb.Models.PromotionsModel;
+import com.example.simplon_clone_fb.Services.AdminServices;
 import com.example.simplon_clone_fb.Services.TeacherServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -14,6 +17,17 @@ public class TeacherServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+        if(request.getParameter("type").equals("withoutpromo")){
+            List<ApprenantsModel> apprenats = new TeacherServices().getAllStudentsWithoutPromotion();
+            session.setAttribute("TeacherData",apprenats);
+            response.sendRedirect("view/subPages/NoTeachersLearnersTable.jsp");
+        }else if(request.getParameter("type").equals("withpromo")) {
+            int id = (Integer) session.getAttribute("id");
+            List<ApprenantsModel> apprenants = new TeacherServices().getAllTeacherStudents("2022-2021", id);
+            session.setAttribute("TeacherData", apprenants);
+            response.sendRedirect("view/subPages/TeachersLearnersTable.jsp");
+        }
     }
 
     @Override
@@ -27,8 +41,10 @@ public class TeacherServlet extends HttpServlet {
             if(request.getParameter("op").equalsIgnoreCase("read")){
                 if(request.getParameter("type").equalsIgnoreCase("withpromo")){
                     System.out.println("TeacherServlet.doPost");
-                    List<ApprenantsModel> apprenats = teacher.getAllTeacherStudents("2022-2021",session.getId());
-                    session.setAttribute("TeacherData",apprenats);
+                    System.out.println("id is : " + session.getAttribute("id"));
+                    int id = (Integer) session.getAttribute("id");
+                    List<ApprenantsModel> apprenants = teacher.getAllTeacherStudents("2022-2021",id);
+                    session.setAttribute("TeacherData",apprenants);
                     response.sendRedirect("view/subPages/TeachersLearnersTable.jsp");
                 } else if (request.getParameter("type").equalsIgnoreCase("withoutpromo")) {
                     List<ApprenantsModel> apprenats = teacher.getAllStudentsWithoutPromotion();
@@ -36,8 +52,9 @@ public class TeacherServlet extends HttpServlet {
                     response.sendRedirect("view/subPages/NoTeachersLearnersTable.jsp");
                 }
             }else if(request.getParameter("op").equalsIgnoreCase("add")){
-              //  teacher.addStudentToPromo(request.getParameter("id"),request.getParameter("promo"));
-                //response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
+                int id = (Integer) session.getAttribute("id");
+                teacher.addStudentToPromo(request.getParameter("promoid"),id);
+                response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
         } else if (request.getParameter("field").equalsIgnoreCase("briefs")) {
 
         }

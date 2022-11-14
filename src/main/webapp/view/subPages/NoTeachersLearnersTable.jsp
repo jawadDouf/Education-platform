@@ -66,7 +66,11 @@
               <%= ((ApprenantsModel) list.get(i)).getEmail() %>
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              -
+              <form action="/TeacherServlet?field=apprenants&op=add" method="post">
+                <input type="text" hidden name="promoid" value="<%=((ApprenantsModel) list.get(i)).getId()%>">
+                <input type="submit" class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" value="assign" id="assign_form_button" />
+              </form>
+
             </td>
           </tr>
           <% }%>
