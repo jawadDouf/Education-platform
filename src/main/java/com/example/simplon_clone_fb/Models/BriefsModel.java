@@ -23,6 +23,7 @@ public class BriefsModel {
     @Basic
     @Column(name = "liverable")
     private String liverable;
+
     @Basic
     @Column(name = "liverable_date")
     private int liverableDate;
@@ -32,6 +33,11 @@ public class BriefsModel {
     @Basic
     @Column(name = "date_fin")
     private Date dateFin;
+
+    @Basic
+    @Column(name = "status")
+    private boolean status;
+
     @Basic
     @Column(name = "promo_id")
     private int promoId;
@@ -98,6 +104,14 @@ public class BriefsModel {
 
     public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public int getPromoId() {

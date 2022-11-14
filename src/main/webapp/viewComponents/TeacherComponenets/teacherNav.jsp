@@ -29,10 +29,10 @@
           <a href="/TeacherServlet?field=apprenants&type=withpromo&op=read" class="block py-2 pr-4 pl-3 text-gray-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-[18px]" aria-current="page">MyStudents</a>
         </li>
         <li>
-          <a href="/TeacherServlet?field=apprenants&type=withoutpromo&op=read" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:text-blue-700 text-[18px]">AvaillableStudents</a>
+          <a href="/TeacherServlet?field=apprenants&type=withoutpromo&op=read" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:text-blue-700 text-[18px]">students</a>
         </li>
         <li>
-          <a href="/TeacherServlet?field=apprenants&type=withpromo&op=read" class="block  py-2 pr-4 pl-3 text-gray-700 rounded hover:text-blue-700 text-[18px]">Promotions</a>
+          <a href="/TeacherServlet?field=briefs&op=read" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:text-blue-700 text-[18px]">briefs</a>
         </li>
       </ul>
     </div>

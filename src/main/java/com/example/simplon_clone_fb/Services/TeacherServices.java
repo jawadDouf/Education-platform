@@ -2,8 +2,10 @@ package com.example.simplon_clone_fb.Services;
 
 import com.example.simplon_clone_fb.Dao.daoApprenant;
 import com.example.simplon_clone_fb.Dao.daoApprenantPromo;
+import com.example.simplon_clone_fb.Dao.daoBrief;
 import com.example.simplon_clone_fb.Dao.daoPromotions;
 import com.example.simplon_clone_fb.Models.ApprenantsModel;
+import com.example.simplon_clone_fb.Models.BriefsModel;
 import com.example.simplon_clone_fb.Models.PromoApprenantModel;
 
 import java.util.List;
@@ -38,5 +40,12 @@ public class TeacherServices {
         promoApprenantModel.setPromoId(promoId);
         promoApprenantModel.setYear("2022-2021");
         return new daoApprenantPromo().addOneElement(promoApprenantModel);
+    }
+
+    //get all the briefs
+
+    public List<BriefsModel> getAllBriefs(){
+        List<BriefsModel> briefs = new daoBrief().selectAll(BriefsModel.class);
+        return briefs;
     }
 }
