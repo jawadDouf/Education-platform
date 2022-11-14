@@ -55,13 +55,16 @@ public class TeacherServlet extends HttpServlet {
                     response.sendRedirect("view/subPages/TeachersLearnersTable.jsp");
                 }
             }else if(request.getParameter("op").equalsIgnoreCase("add")){
-                //int id = (Integer) session.getAttribute("id");
-               // teacher.addStudentToPromo(request.getParameter("promoid"),id);
-                // response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
+                  int id = (Integer) session.getAttribute("id");
+                  teacher.addStudentToPromo(request.getParameter("promoid"),id);
+                  response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
         } else if (request.getParameter("field").equalsIgnoreCase("briefs")) {
                  if(request.getParameter("op").equalsIgnoreCase("add")){
-
+                        int id = (Integer) session.getAttribute("id");
+                        teacher.createAssignment(request.getParameter("title"),request.getParameter("description"),request.getParameter("deadline"),"zope","zoep",id);
+                        response.sendRedirect("TeacherServlet?field=brief&type=.s&op=read");
+                    }
                 }
             }
-    }}}
+    }}
 

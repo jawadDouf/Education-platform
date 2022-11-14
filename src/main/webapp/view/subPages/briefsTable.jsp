@@ -32,7 +32,10 @@
             <h3 class="font-semibold text-base text-blueGray-700">Assignments Table</h3>
           </div>
           <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-            <button class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Add New</button>
+            <a href="../../viewComponents/forms/createAssignment.jsp">
+              <button class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Add New</button>
+            </a>
+
           </div>
         </div>
       </div>
@@ -90,7 +93,7 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               <form action="/TeacherServlet?field=briefs&op=assign" method="post">
                 <input type="text" hidden name="promoid" value="<%=((BriefsModel) list.get(i)).getId()%>">
-                <input type="submit" class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" value="assign" id="assign_form_button" />
+                <input type="submit" class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 cursor-pointer rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" value="assign" id="assign_form_button" />
               </form>
             </td>
           </tr>

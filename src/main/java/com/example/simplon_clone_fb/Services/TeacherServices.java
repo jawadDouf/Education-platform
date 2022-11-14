@@ -7,7 +7,9 @@ import com.example.simplon_clone_fb.Dao.daoPromotions;
 import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import com.example.simplon_clone_fb.Models.BriefsModel;
 import com.example.simplon_clone_fb.Models.PromoApprenantModel;
+import com.example.simplon_clone_fb.Models.PromotionsModel;
 
+import java.util.Date;
 import java.util.List;
 
 public class TeacherServices {
@@ -53,5 +55,19 @@ public class TeacherServices {
         //select the briefs
         List<BriefsModel> briefs = new daoBrief().selectAll(promoId);
         return briefs;
+    }
+
+    //Create a new assignement
+    public boolean createAssignment(String titre,String description,String languages,String liverable ,String liverable_date,Integer promo_id){
+        System.out.println("AdminServices.addPromotion");
+        BriefsModel brief = new BriefsModel();
+        brief.setTitre(titre);
+        brief.setDescription(description);
+        brief.setLanguages(languages);
+        brief.setLiverable(liverable);
+        brief.setLiverableDate(Integer.parseInt(liverable_date));
+        brief.setPromoId(promo_id);
+        return new daoBrief().addOneElement(brief);
+
     }
 }
