@@ -44,8 +44,14 @@ public class TeacherServices {
 
     //get all the briefs
 
-    public List<BriefsModel> getAllBriefs(){
-        List<BriefsModel> briefs = new daoBrief().selectAll(BriefsModel.class);
+    public List<BriefsModel> getAllBriefs(Integer id){
+        //get the promo of the teacher id
+        System.out.println("id now is :" + id);
+        int promoId = new daoPromotions().selectPromotionOfTeacher(id).getId();
+        System.out.println(promoId);
+
+        //select the briefs
+        List<BriefsModel> briefs = new daoBrief().selectAll(promoId);
         return briefs;
     }
 }

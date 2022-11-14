@@ -19,7 +19,7 @@ public class TeacherServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        if (request.getParameter("type").equals("withoutpromo")) {
+        if (request.getParameter("type").equals("withoutpromo")){
             List<ApprenantsModel> apprenats = new TeacherServices().getAllStudentsWithoutPromotion();
             session.setAttribute("TeacherData", apprenats);
             response.sendRedirect("view/subPages/NoTeachersLearnersTable.jsp");
@@ -30,7 +30,8 @@ public class TeacherServlet extends HttpServlet {
             response.sendRedirect("view/subPages/TeachersLearnersTable.jsp");
         } else if (request.getParameter("field").equalsIgnoreCase("briefs")) {
             if (request.getParameter("op").equalsIgnoreCase("read")) {
-                List<BriefsModel> briefs = new TeacherServices().getAllBriefs();
+                int id = (Integer) session.getAttribute("id");
+                List<BriefsModel> briefs = new TeacherServices().getAllBriefs(id);
                 session.setAttribute("TeacherData", briefs);
                 response.sendRedirect("view/subPages/briefsTable.jsp");
             }
@@ -54,9 +55,9 @@ public class TeacherServlet extends HttpServlet {
                     response.sendRedirect("view/subPages/TeachersLearnersTable.jsp");
                 }
             }else if(request.getParameter("op").equalsIgnoreCase("add")){
-                int id = (Integer) session.getAttribute("id");
-                teacher.addStudentToPromo(request.getParameter("promoid"),id);
-                response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
+                //int id = (Integer) session.getAttribute("id");
+               // teacher.addStudentToPromo(request.getParameter("promoid"),id);
+                // response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
         } else if (request.getParameter("field").equalsIgnoreCase("briefs")) {
                  if(request.getParameter("op").equalsIgnoreCase("add")){
 
