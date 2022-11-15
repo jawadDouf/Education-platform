@@ -23,7 +23,7 @@
     <div class="logo">
       <img src="../../Simplon_co.png" alt="simplon_logo" width="120" height="50"/>
     </div>
-    <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+    <div class="hidden justify-between items-center w-full md:flex md:w-auto" id="navbar-cta">
       <ul class="flex flex-col bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:bg-white ">
         <li>
           <a href="/TeacherServlet?field=apprenants&type=withpromo&op=read" class="block py-2 pr-4 pl-3 text-gray-700 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-[18px]" aria-current="page">MyStudents</a>
@@ -35,6 +35,12 @@
           <a href="/TeacherServlet?field=briefs&type=.&op=read" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:text-blue-700 text-[18px]">briefs</a>
         </li>
       </ul>
+    </div>
+    <div class="">
+      <i class="fas fa-right-from-bracket color-blue-700"></i>
+      <a href="/LogoutServlet" class="py-2 pr-4 pl-3 text-gray-700 rounded hover:text-blue-700 text-[18px]">
+        Logout
+      </a>
     </div>
   </div>
 </nav>

@@ -80,6 +80,23 @@ abstract class  databaseAccessObject<T> {
         return false;
     }
 
+    //delete elements
+    public boolean deleteElement(Class<T> tClass,int id) {
+        EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+        try{
+            entityManager.getTransaction().begin();
+            T object = entityManager.find(tClass,id);
+            T obj = entityManager.merge(object);
+            entityManager.remove(obj);
+            entityManager.getTransaction().commit();
+            return true;
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
 
 
 

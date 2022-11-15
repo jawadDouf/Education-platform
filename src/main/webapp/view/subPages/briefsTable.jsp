@@ -70,7 +70,11 @@
           <% for(int i = 0;i<list.size();i++) {%>
           <tr class="<% if(((BriefsModel) list.get(i)).isStatus() == true) {%> bg-gray-200 <% }else{}%>">
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-              <%= ((BriefsModel) list.get(i)).getTitre() %>
+              <form method="post" action="/TeacherServlet?field=briefs&type=za&op=readOne">
+                <input class="cursor-pointer hover:text-underline" type="submit" value="<%= ((BriefsModel) list.get(i)).getTitre() %>">
+                <input hidden name="id" value="<%= ((BriefsModel) list.get(i)).getId() %>">
+              </form>
+
             </th>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
               <%= ((BriefsModel) list.get(i)).getLanguages() %>

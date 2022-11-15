@@ -48,9 +48,7 @@
             <li class="block py-2 px-4 my-[1px] hover:bg-gray-200 w-full text-black bg-gray-300 border-b rounded-lg border-gray-200 cursor-pointer" class="promotion">
               <%= promotion.getNom() %>
             </li>
-              <input class="invisible" id="invisible" name="promotion" value="<%= promotion.getId() %> <%= promotion.getNom() %> <%= promotion.getSize() %>">
-
-
+              <input class="" id="invisible" name="promotion" value="<%= promotion.getId() %> <%= promotion.getNom() %> <%= promotion.getSize() %>">
             <%}%>
           </div>
         <input

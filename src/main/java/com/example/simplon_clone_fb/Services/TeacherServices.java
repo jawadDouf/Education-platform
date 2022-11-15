@@ -90,4 +90,9 @@ public class TeacherServices {
         return new daoBrief().update(brief);
 
     }
+
+    //get One Assignment
+    public BriefsModel getOneAssignment(String assignmentId){
+        return new daoBrief().getOneElement(BriefsModel.class,Integer.parseInt(assignmentId));
+    }
 }

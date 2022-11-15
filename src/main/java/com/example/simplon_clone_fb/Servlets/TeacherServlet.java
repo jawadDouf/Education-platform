@@ -32,8 +32,10 @@ public class TeacherServlet extends HttpServlet {
                 session.setAttribute("TeacherData", briefs);
                 response.sendRedirect("view/subPages/briefsTable.jsp");
             }
-        }
+
+            }
     }
+
     @Override
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         System.out.println("TeacherServlet.doPost");
@@ -67,10 +69,14 @@ public class TeacherServlet extends HttpServlet {
                         response.sendRedirect("TeacherServlet?field=briefs&type=s&op=read");
                     }else if(request.getParameter("op").equalsIgnoreCase("assign")){
                         System.out.println("TeacherServlet.doPost");
-                     int id = (Integer) session.getAttribute("id");
+                        int id = (Integer) session.getAttribute("id");
                         teacher.assignBriefToStudent(request.getParameter("briefId"),id);
                         response.sendRedirect("TeacherServlet?field=briefs&type=s&op=read");
-                    }
+                    } else if (request.getParameter("op").equalsIgnoreCase("readOne")) {
+                     System.out.println("TeacherServlet.doPost2");
+                     session.setAttribute("TeacherData", new TeacherServices().getOneAssignment(request.getParameter("id")));
+                     response.sendRedirect("view/subPages/briefIndex.jsp");
+                 }
                  }
                 }
         }

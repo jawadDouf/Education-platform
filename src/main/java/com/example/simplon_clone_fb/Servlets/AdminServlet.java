@@ -41,7 +41,7 @@ public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Services Classes that we going to use
         AdminServices adminServices = new AdminServices();
-        //Initilise the session
+        //Initialise the session
         HttpSession session = request.getSession();
         //Logic
         if(request.getParameter("field").equalsIgnoreCase("formateurs")){
@@ -56,7 +56,7 @@ public class AdminServlet extends HttpServlet {
                   request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
             }else if (request.getParameter("op").equalsIgnoreCase("assign")) {
                 String[] promotionData = request.getParameter("promotion").split(" ");
-                adminServices.assignPromotion(promotionData[0],promotionData[1],promotionData[2],promotionData[3]);
+                adminServices.assignPromotion(promotionData[0],promotionData[1]+" " + promotionData[2],promotionData[3],promotionData[4]);
                 request.getRequestDispatcher("AdminServlet?field=formateurs&op=read").forward(request,response);
             }
 

@@ -64,6 +64,7 @@ public class AdminServices {
        PromotionsModel promotion = new PromotionsModel();
        promotion.setId(Integer.parseInt(id_promo));
        promotion.setNom(name);
+       System.out.println("size = "+size);
        promotion.setSize(Integer.parseInt(size));
        promotion.setFormateurId(Integer.parseInt(id_formateur));
        return new daoPromotions().update(promotion);
