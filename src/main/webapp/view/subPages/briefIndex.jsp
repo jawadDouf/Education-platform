@@ -15,11 +15,16 @@
 <body>
 <jsp:include page="/viewComponents/TeacherComponenets/teacherNav.jsp" />
 <div
-        class="divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white w-[90%] mx-auto mt-12 shadow-lg">
+        class="divide-y divide-gray-200 rounded-xl border border-gray-200 bg-white w-[90%] mx-auto mt-12 mb-4 shadow-lg">
     <%
         HttpSession session1 = request.getSession();
         BriefsModel brief = (BriefsModel) session1.getAttribute("TeacherData");
     %>
+    <div
+            class="divide-y divide-gray-500 rounded-xl border border-gray-200  bg-white p-6"
+    >
+        <img src="https://thumbnails.production.thenounproject.com/gA9eZOvsBYSHrMumgrslmRGoBto=/fit-in/1000x1000/photos.production.thenounproject.com/photos/BCBA88B6-5B41-4B50-A786-E60CAA0ECDA3.jpg" class="h-[500px] mx-auto w-auto"/>
+    </div>
     <details class="group p-6" open>
         <summary class="flex cursor-pointer items-center justify-between">
             <h2 class="text-lg font-medium text-gray-900">
@@ -103,7 +108,10 @@
       </span>
         </summary>
         <p class="mt-4 leading-relaxed text-black">
-            <%= brief.getLanguages() %>
+            <% String[] languages = brief.getLanguages().split(" "); %>
+            <%for (String language : languages) { %>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><%= language %></span>
+             <%} ;%>
         </p>
     </details>
     <details class="group p-6" open>
@@ -187,7 +195,6 @@
         </svg>
       </span>
         </summary>
-
         <p class="mt-4 leading-relaxed text-gray-700">
          <p class="text-xl">Start Date : </p> <p class="text-lg text-[18px]"><%= brief.getDateDebut().toString() %></p>
            <p class="text-xl">Deadline : </p><p class="text-lg text-[18px]"><%= brief.getDateFin().toString() %></p>

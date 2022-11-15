@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
                     } else {
                         session.setAttribute("id", ((ApprenantsModel) obj).getId());
                         session.setAttribute("role", "Apprenant");
-                        request.getRequestDispatcher("pages/apprenantDashboard.jsp").forward(request, response);
+                        request.getRequestDispatcher("").forward(request, response);
                         //response.sendRedirect("pages/apprenantDashboard.jsp");
                     }
 
