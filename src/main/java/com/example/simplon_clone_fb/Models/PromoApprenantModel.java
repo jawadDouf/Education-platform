@@ -2,8 +2,6 @@ package com.example.simplon_clone_fb.Models;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
-
 @Entity
 @Table(name = "promo_apprenant", schema = "public", catalog = "education_platform")
 public class PromoApprenantModel {
@@ -24,7 +22,7 @@ public class PromoApprenantModel {
     @JoinColumn(name = "apprenant_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private ApprenantsModel apprenantsByApprenantId;
     @ManyToOne
-    @JoinColumn(name = "promo_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "promo_id", referencedColumnName = "id", nullable = false ,insertable = false,updatable = false)
     private PromotionsModel promotionsByPromoId;
 
     public int getId() {

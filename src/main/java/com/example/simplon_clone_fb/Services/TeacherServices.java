@@ -7,15 +7,13 @@ import com.example.simplon_clone_fb.Dao.daoPromotions;
 import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import com.example.simplon_clone_fb.Models.BriefsModel;
 import com.example.simplon_clone_fb.Models.PromoApprenantModel;
-import com.example.simplon_clone_fb.Models.PromotionsModel;
 
-import java.util.Date;
 import java.util.List;
 
 public class TeacherServices {
 
     // get all students of a teacher
-    public List<ApprenantsModel> getAllTeacherStudents(String year,Integer teacherId){
+    public List<ApprenantsModel> getAllTeacherStudents(String year, Integer teacherId){
         System.out.println("TeacherServices.getAllTeacherStudents");
         //get the promo of the teacher id
         System.out.println("id now is :" + teacherId);
@@ -54,20 +52,30 @@ public class TeacherServices {
 
         //select the briefs
         List<BriefsModel> briefs = new daoBrief().selectAll(promoId);
+        System.out.println("dddd" + briefs.get(0).getPromoId());
         return briefs;
     }
 
     //Create a new assignement
-    public boolean createAssignment(String titre,String description,String languages,String liverable ,String liverable_date,Integer promo_id){
+    public boolean createAssignment(String title,String subTitle,String languages,String description,String startDate ,String deadline ,Integer teacherId){
+        //get the promo of the teacher id
+        System.out.println("id now is :" + teacherId);
+        int promoId = new daoPromotions().selectPromotionOfTeacher(teacherId).getId();
+        System.out.println(promoId);
+        //Start adding the assignment
         System.out.println("AdminServices.addPromotion");
         BriefsModel brief = new BriefsModel();
-        brief.setTitre(titre);
+        brief.setTitre(title);
         brief.setDescription(description);
         brief.setLanguages(languages);
-        brief.setLiverable(liverable);
-        brief.setLiverableDate(Integer.parseInt(liverable_date));
-        brief.setPromoId(promo_id);
-        return new daoBrief().addOneElement(brief);
+        brief.setSubTitle(subTitle);
 
+
+        brief.setDateDebut(java.sql.Date.valueOf(startDate));
+        brief.setDateFin(java.sql.Date.valueOf(deadline));
+        //set the promo id and status
+        brief.setPromoId(promoId);
+        brief.setStatus(false);
+        return new daoBrief().addOneElement(brief);
     }
 }

@@ -2,9 +2,6 @@ package com.example.simplon_clone_fb.Servlets;
 
 import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import com.example.simplon_clone_fb.Models.BriefsModel;
-import com.example.simplon_clone_fb.Models.FormateursModel;
-import com.example.simplon_clone_fb.Models.PromotionsModel;
-import com.example.simplon_clone_fb.Services.AdminServices;
 import com.example.simplon_clone_fb.Services.TeacherServices;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -39,6 +36,7 @@ public class TeacherServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("TeacherServlet.doPost");
         //Initialise the teacher services
         TeacherServices teacher = new TeacherServices();
          //Initialise the session
@@ -53,18 +51,23 @@ public class TeacherServlet extends HttpServlet {
                     List<ApprenantsModel> apprenants = teacher.getAllTeacherStudents("2022-2021",id);
                     session.setAttribute("TeacherData",apprenants);
                     response.sendRedirect("view/subPages/TeachersLearnersTable.jsp");
-                }
-            }else if(request.getParameter("op").equalsIgnoreCase("add")){
-                  int id = (Integer) session.getAttribute("id");
-                  teacher.addStudentToPromo(request.getParameter("promoid"),id);
-                  response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
-        } else if (request.getParameter("field").equalsIgnoreCase("briefs")) {
+                }else if(request.getParameter("op").equalsIgnoreCase("add")) {
+                int id = (Integer) session.getAttribute("id");
+                teacher.addStudentToPromo(request.getParameter("promoid"), id);
+                response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
+            }
+        }
+
+         }else if (request.getParameter("field").equalsIgnoreCase("briefs")) {
+                System.out.println("TeacherServlet.doPost");
                  if(request.getParameter("op").equalsIgnoreCase("add")){
+                     System.out.println("TeacherServlet.doPost");
                         int id = (Integer) session.getAttribute("id");
-                        teacher.createAssignment(request.getParameter("title"),request.getParameter("description"),request.getParameter("deadline"),"zope","zoep",id);
-                        response.sendRedirect("TeacherServlet?field=brief&type=.s&op=read");
+                        System.out.println("TeacherServlet.doPost");
+                        teacher.createAssignment(request.getParameter("title"),request.getParameter("subTitle"),request.getParameter("languages"),request.getParameter("description"),request.getParameter("startDate"),request.getParameter("deadline"),id);
+                        response.sendRedirect("TeacherServlet?field=briefs&type=s&op=read");
                     }
                 }
-            }
-    }}
+        }
+    }
 

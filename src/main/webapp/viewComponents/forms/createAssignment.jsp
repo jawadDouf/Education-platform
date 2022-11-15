@@ -20,7 +20,7 @@
                                <p class="font-bold text-xl">Create a new assignment</p>
                            </div>
                            <div class="lg:col-span-2">
-                               <form method="post" action="/TeacherServlet?field=briefs&type=adding&op=add">
+                               <form action="/TeacherServlet?field=briefs&type=adding&op=add" method="post" >
 
 
                                <h1 class="font-bold text-xl">Enter the informations</h1>

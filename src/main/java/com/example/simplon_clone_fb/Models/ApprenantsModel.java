@@ -26,8 +26,6 @@ public class ApprenantsModel {
     @OneToMany(mappedBy = "apprenantsByApprenantId")
     private Collection<PromoApprenantModel> promoApprenantsById;
 
-
-
     public int getId() {
         return id;
     }

@@ -1,6 +1,5 @@
 package com.example.simplon_clone_fb.Dao;
 
-import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
