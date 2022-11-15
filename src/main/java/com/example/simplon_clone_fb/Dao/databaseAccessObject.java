@@ -24,6 +24,20 @@ abstract class  databaseAccessObject<T> {
         return null;
     };
 
+     //get oneElament by id
+     public T getOneElement(Class<T> objectClass, Integer id) {
+         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+         try{
+
+             return entityManager.find(objectClass,id);
+
+         }catch (Exception e){
+             System.out.println(e.getMessage());
+             return null;
+         }
+
+     }
+
      // select element by id
      public T getOneElementById(Class<T> objectClass,int id){
          //Start the entity

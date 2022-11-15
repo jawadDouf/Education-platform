@@ -70,12 +70,24 @@ public class TeacherServices {
         brief.setLanguages(languages);
         brief.setSubTitle(subTitle);
 
-
         brief.setDateDebut(java.sql.Date.valueOf(startDate));
         brief.setDateFin(java.sql.Date.valueOf(deadline));
         //set the promo id and status
         brief.setPromoId(promoId);
         brief.setStatus(false);
         return new daoBrief().addOneElement(brief);
+    }
+
+    //assign a brief to a students
+    public boolean assignBriefToStudent(String assignmentId,Integer teacherId){
+        //bring the Assignment
+        BriefsModel brief = new daoBrief().getOneElement(BriefsModel.class,Integer.parseInt(assignmentId));
+        //set the status to true
+        brief.setStatus(true);
+        //send the emeil
+        new sendEmail(teacherId);
+        //update the assignment
+        return new daoBrief().update(brief);
+
     }
 }

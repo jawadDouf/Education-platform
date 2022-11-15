@@ -68,7 +68,7 @@
           <tbody>
 
           <% for(int i = 0;i<list.size();i++) {%>
-          <tr>
+          <tr class="<% if(((BriefsModel) list.get(i)).isStatus() == true) {%> bg-gray-200 <% }else{}%>">
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
               <%= ((BriefsModel) list.get(i)).getTitre() %>
             </th>
@@ -91,9 +91,13 @@
               <i class="fas fa-trash"></i>
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              <form action="/TeacherServlet?field=briefs&op=assign" method="post">
-                <input type="text" hidden name="promoid" value="<%=((BriefsModel) list.get(i)).getId()%>">
+              <form action="/TeacherServlet?field=briefs&type=briefs&op=assign" method="post">
+                <input type="text" hidden name="briefId" value="<%=((BriefsModel) list.get(i)).getId()%>">
+                <% if(((BriefsModel) list.get(i)).isStatus() == true){  %>
+                <%= "-" %>
+                <% }else{  %>
                 <input type="submit" class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 cursor-pointer rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" value="assign" id="assign_form_button" />
+                <%};%>
               </form>
             </td>
           </tr>

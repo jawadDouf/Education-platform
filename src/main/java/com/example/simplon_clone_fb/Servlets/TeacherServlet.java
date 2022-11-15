@@ -57,7 +57,6 @@ public class TeacherServlet extends HttpServlet {
                 response.sendRedirect("TeacherServlet?field=apprenants&type=withpromo&op=read");
             }
         }
-
          }else if (request.getParameter("field").equalsIgnoreCase("briefs")) {
                 System.out.println("TeacherServlet.doPost");
                  if(request.getParameter("op").equalsIgnoreCase("add")){
@@ -66,8 +65,14 @@ public class TeacherServlet extends HttpServlet {
                         System.out.println("TeacherServlet.doPost");
                         teacher.createAssignment(request.getParameter("title"),request.getParameter("subTitle"),request.getParameter("languages"),request.getParameter("description"),request.getParameter("startDate"),request.getParameter("deadline"),id);
                         response.sendRedirect("TeacherServlet?field=briefs&type=s&op=read");
+                    }else if(request.getParameter("op").equalsIgnoreCase("assign")){
+                        System.out.println("TeacherServlet.doPost");
+                     int id = (Integer) session.getAttribute("id");
+                        teacher.assignBriefToStudent(request.getParameter("briefId"),id);
+                        response.sendRedirect("TeacherServlet?field=briefs&type=s&op=read");
                     }
+                 }
                 }
         }
-    }
+
 
