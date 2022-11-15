@@ -2,8 +2,6 @@ package com.example.simplon_clone_fb.Models;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
-
 @Entity
 @Table(name = "promo_apprenant", schema = "public", catalog = "education_platform")
 public class PromoApprenantModel {
@@ -19,12 +17,12 @@ public class PromoApprenantModel {
     private int promoId;
     @Basic
     @Column(name = "year")
-    private Date year;
+    private String year;
     @ManyToOne
     @JoinColumn(name = "apprenant_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private ApprenantsModel apprenantsByApprenantId;
     @ManyToOne
-    @JoinColumn(name = "promo_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "promo_id", referencedColumnName = "id", nullable = false ,insertable = false,updatable = false)
     private PromotionsModel promotionsByPromoId;
 
     public int getId() {
@@ -51,11 +49,11 @@ public class PromoApprenantModel {
         this.promoId = promoId;
     }
 
-    public Date getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

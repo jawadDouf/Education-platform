@@ -1,11 +1,11 @@
 package com.example.simplon_clone_fb.Services;
 
-import com.example.simplon_clone_fb.Models.ApprenantsModel;
-import com.example.simplon_clone_fb.Models.FormateursModel;
-import com.example.simplon_clone_fb.Models.PromotionsModel;
 import com.example.simplon_clone_fb.Dao.daoApprenant;
 import com.example.simplon_clone_fb.Dao.daoFormateur;
 import com.example.simplon_clone_fb.Dao.daoPromotions;
+import com.example.simplon_clone_fb.Models.ApprenantsModel;
+import com.example.simplon_clone_fb.Models.FormateursModel;
+import com.example.simplon_clone_fb.Models.PromotionsModel;
 
 import java.util.List;
 
@@ -64,6 +64,7 @@ public class AdminServices {
        PromotionsModel promotion = new PromotionsModel();
        promotion.setId(Integer.parseInt(id_promo));
        promotion.setNom(name);
+       System.out.println("size = "+size);
        promotion.setSize(Integer.parseInt(size));
        promotion.setFormateurId(Integer.parseInt(id_formateur));
        return new daoPromotions().update(promotion);

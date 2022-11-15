@@ -23,7 +23,7 @@ public class PromotionsModel {
     @OneToMany(mappedBy = "promotionsByPromoId")
     private Collection<PromoApprenantModel> promoApprenantsById;
     @ManyToOne
-    @JoinColumn(name = "formateur_id", referencedColumnName = "id", nullable = false  ,insertable=false , updatable = false)
+    @JoinColumn(name = "formateur_id", referencedColumnName = "id", nullable = false ,insertable=false , updatable = false )
     private FormateursModel formateursByFormateurId;
 
     public int getId() {

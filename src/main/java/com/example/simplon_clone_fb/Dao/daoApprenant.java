@@ -4,15 +4,14 @@ import com.example.simplon_clone_fb.Models.ApprenantsModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
+import java.util.List;
+
 public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
 
 
-    @Override
-    ApprenantsModel getOneElementById(int id) {
-        return null;
-    }
 
-    @Override
+
+
     public ApprenantsModel getOneElementByEmailPassword(String email, String password) {
         try{
 
@@ -35,6 +34,45 @@ public class daoApprenant extends databaseAccessObject<ApprenantsModel> {
             System.out.println(e);
         }
         return null;
+    }
+
+    //select all learners by promotion and year
+
+    public List<ApprenantsModel> selectAllStudentsOfPromotion(String year, int promoId){
+        try{
+            //Start the transaction
+            EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+            //Create the query and return the element from database
+            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a from ApprenantsModel a JOIN a.promoApprenantsById b WHERE b.promoId = :promoId",ApprenantsModel.class);
+
+            //Prepare the statement
+            query.setParameter("promoId",promoId);
+
+            List<ApprenantsModel> apprenants = query.getResultList();
+
+            System.out.println(apprenants.get(0));
+            return apprenants;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    //select all learners with out a promotion
+    public List<ApprenantsModel> getAllStudentsWithoutPromotion(){
+        try{
+            //Start the transaction
+            EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+            //Create the query and return the element from database
+            TypedQuery<ApprenantsModel> query = entityManager.createQuery("SELECT a  from ApprenantsModel a LEFT JOIN a.promoApprenantsById b WHERE b.id IS NULL",ApprenantsModel.class);
+            List<ApprenantsModel> apprenants = query.getResultList();
+            return apprenants;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
+
     }
 
 

@@ -4,6 +4,12 @@
 #assign_form_container{
     display: none;
 }
+#overlay_22{
+    display: none;
+}
+#assign_form_container2{
+    display: none;
+}
 #overlay{
     display: none;
 }

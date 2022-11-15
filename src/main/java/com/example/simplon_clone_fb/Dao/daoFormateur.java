@@ -7,12 +7,8 @@ import jakarta.persistence.TypedQuery;
 public class daoFormateur extends databaseAccessObject<FormateursModel>{
 
 
-    @Override
-    FormateursModel getOneElementById(int id) {
-        return null;
-    }
 
-    @Override
+
     public FormateursModel getOneElementByEmailPassword(String email, String password) {
         try{
 
@@ -36,6 +32,7 @@ public class daoFormateur extends databaseAccessObject<FormateursModel>{
         }
         return null;
     }
+
 
 
 }

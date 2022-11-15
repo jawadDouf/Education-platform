@@ -21,12 +21,6 @@ public class BriefsModel {
     @Column(name = "languages")
     private String languages;
     @Basic
-    @Column(name = "liverable")
-    private String liverable;
-    @Basic
-    @Column(name = "liverable_date")
-    private int liverableDate;
-    @Basic
     @Column(name = "date_debut")
     private Date dateDebut;
     @Basic
@@ -35,6 +29,12 @@ public class BriefsModel {
     @Basic
     @Column(name = "promo_id")
     private int promoId;
+    @Basic
+    @Column(name = "status")
+    private boolean status;
+    @Basic
+    @Column(name = "subTitle")
+    private String subTitle;
 
     public int getId() {
         return id;
@@ -68,22 +68,6 @@ public class BriefsModel {
         this.languages = languages;
     }
 
-    public String getLiverable() {
-        return liverable;
-    }
-
-    public void setLiverable(String liverable) {
-        this.liverable = liverable;
-    }
-
-    public int getLiverableDate() {
-        return liverableDate;
-    }
-
-    public void setLiverableDate(int liverableDate) {
-        this.liverableDate = liverableDate;
-    }
-
     public Date getDateDebut() {
         return dateDebut;
     }
@@ -108,6 +92,22 @@ public class BriefsModel {
         this.promoId = promoId;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,14 +116,14 @@ public class BriefsModel {
         BriefsModel that = (BriefsModel) o;
 
         if (id != that.id) return false;
-        if (liverableDate != that.liverableDate) return false;
         if (promoId != that.promoId) return false;
+        if (status != that.status) return false;
         if (titre != null ? !titre.equals(that.titre) : that.titre != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (languages != null ? !languages.equals(that.languages) : that.languages != null) return false;
-        if (liverable != null ? !liverable.equals(that.liverable) : that.liverable != null) return false;
         if (dateDebut != null ? !dateDebut.equals(that.dateDebut) : that.dateDebut != null) return false;
         if (dateFin != null ? !dateFin.equals(that.dateFin) : that.dateFin != null) return false;
+        if (subTitle != null ? !subTitle.equals(that.subTitle) : that.subTitle != null) return false;
 
         return true;
     }
@@ -134,11 +134,11 @@ public class BriefsModel {
         result = 31 * result + (titre != null ? titre.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (languages != null ? languages.hashCode() : 0);
-        result = 31 * result + (liverable != null ? liverable.hashCode() : 0);
-        result = 31 * result + liverableDate;
         result = 31 * result + (dateDebut != null ? dateDebut.hashCode() : 0);
         result = 31 * result + (dateFin != null ? dateFin.hashCode() : 0);
         result = 31 * result + promoId;
+        result = 31 * result + (status ? 1 : 0);
+        result = 31 * result + (subTitle != null ? subTitle.hashCode() : 0);
         return result;
     }
 }

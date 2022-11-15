@@ -6,12 +6,7 @@ import jakarta.persistence.Persistence;
 
 
 public class entityUtility {
-
-
     public static EntityManagerFactory entityManagerFactory;
-
-
-
 
     //return an entity manager
     public static EntityManagerFactory getEntityManagerFactory(){

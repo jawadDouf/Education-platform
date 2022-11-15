@@ -3,7 +3,6 @@ package com.example.simplon_clone_fb.Dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 abstract class  databaseAccessObject<T> {
@@ -25,12 +24,35 @@ abstract class  databaseAccessObject<T> {
         return null;
     };
 
+     //get oneElament by id
+     public T getOneElement(Class<T> objectClass, Integer id) {
+         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+         try{
+
+             return entityManager.find(objectClass,id);
+
+         }catch (Exception e){
+             System.out.println(e.getMessage());
+             return null;
+         }
+
+     }
+
      // select element by id
-    abstract T getOneElementById(int id);
+     public T getOneElementById(Class<T> objectClass,int id){
+         //Start the entity
+         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+         try{
 
-    // Select element by A column String
+             return entityManager.find(objectClass,id);
 
-   abstract T getOneElementByEmailPassword(String email,String password);
+         }catch (Exception e){
+             System.out.println(e.getMessage());
+         }
+         return null;
+     };
+
+
     // add element in a table
     public boolean addOneElement(T object){
         EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
@@ -57,6 +79,25 @@ abstract class  databaseAccessObject<T> {
         }
         return false;
     }
+
+    //delete elements
+    public boolean deleteElement(Class<T> tClass,int id) {
+        EntityManager entityManager = entityUtility.getEntityManagerFactory().createEntityManager();
+        try{
+            entityManager.getTransaction().begin();
+            T object = entityManager.find(tClass,id);
+            T obj = entityManager.merge(object);
+            entityManager.remove(obj);
+            entityManager.getTransaction().commit();
+            return true;
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+
 
 
 }

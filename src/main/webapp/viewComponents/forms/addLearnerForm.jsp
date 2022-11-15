@@ -21,7 +21,7 @@
         <input
                 type="text"
                 name="nom"
-                placeholder="Enter your name"
+                placeholder="Enter student last name"
                 class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
         />
 
@@ -31,7 +31,7 @@
         <input
                 type="text"
                 name="prenom"
-                placeholder="Enter first name"
+                placeholder="Enter student first name"
                 class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
         />
 
@@ -42,7 +42,7 @@
       <input
               type="email"
               name="email"
-              placeholder="Enter email adress"
+              placeholder="Enter student email adress"
               class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
       />
 
