@@ -95,4 +95,6 @@ public class TeacherServices {
     public BriefsModel getOneAssignment(String assignmentId){
         return new daoBrief().getOneElement(BriefsModel.class,Integer.parseInt(assignmentId));
     }
+
+
 }
