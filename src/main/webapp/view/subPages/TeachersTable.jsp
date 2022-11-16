@@ -76,9 +76,10 @@
                         -
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <i class="fas fa-user-pen"></i>
-                        <i class="fas fa-trash"></i>
-
+                        <a href="/AdminServlet?field=formateurs&type=op&op=delete&id=<%=((FormateursModel) list.get(i)).getId()%>">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                            <i class="fas fa-pen ml-2" id="edit" data-id="<%=((FormateursModel) list.get(i)).getId()%>"></i>
                     </td>
                     <td id="<%=((FormateursModel) list.get(i)).getId() %>" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <button class="bg-gray-800 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" id="assign_form_button">Assign</button>
@@ -94,6 +95,8 @@
 </section>
     <jsp:include page="../../viewComponents/forms/addTeacherForm.jsp"/>
     <jsp:include page="../../viewComponents/forms/assignPromoTeacherForm.jsp" />
+    <jsp:include page="../../viewComponents/forms/updateTeacher.jsp" />
 <script src="../../jsModules/events.js"></script>
+<script src="../../jsModules/updateTeacher.js"></script>
 </body>
 </html>

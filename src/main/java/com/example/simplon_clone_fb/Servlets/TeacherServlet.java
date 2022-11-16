@@ -16,7 +16,7 @@ public class TeacherServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        if (request.getParameter("type").equals("withoutpromo")){
+        if (request.getParameter("type").equals("withoutpromo")) {
             List<ApprenantsModel> apprenats = new TeacherServices().getAllStudentsWithoutPromotion();
             session.setAttribute("TeacherData", apprenats);
             response.sendRedirect("view/subPages/NoTeachersLearnersTable.jsp");
@@ -31,9 +31,13 @@ public class TeacherServlet extends HttpServlet {
                 List<BriefsModel> briefs = new TeacherServices().getAllBriefs(id);
                 session.setAttribute("TeacherData", briefs);
                 response.sendRedirect("view/subPages/briefsTable.jsp");
+            } else if (request.getParameter("op").equalsIgnoreCase("delete")) {
+                System.out.println(request.getParameter("id"));
+                new TeacherServices().deleteAssignment(request.getParameter("id"));
+                response.sendRedirect("TeacherServlet?field=briefs&type=s&op=read");
             }
 
-            }
+        }
     }
 
     @Override
@@ -76,9 +80,14 @@ public class TeacherServlet extends HttpServlet {
                      System.out.println("TeacherServlet.doPost2");
                      session.setAttribute("TeacherData", new TeacherServices().getOneAssignment(request.getParameter("id")));
                      response.sendRedirect("view/subPages/briefIndex.jsp");
+                 } else if (request.getParameter("op").equalsIgnoreCase("edit")) {
+                     int id = (Integer) session.getAttribute("id");
+                     System.out.println("TeacherServlet.doPost");
+                     teacher.updateAssignment(request.getParameter("title"),request.getParameter("subTitle"),request.getParameter("languages"),request.getParameter("description"),request.getParameter("startDate"),request.getParameter("deadline"),id,request.getParameter("assignmentId"));
+                     response.sendRedirect("TeacherServlet?field=briefs&type=s&op=read");
                  }
-                 }
-                }
         }
+                }
+   }
 
 

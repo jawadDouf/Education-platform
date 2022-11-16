@@ -74,8 +74,12 @@
                             -
                         </td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <i class="fas fa-user-pen"></i>
-                            <i class="fas fa-trash"></i>
+                            <a href="../../viewComponents/forms/updateAssignment.jsp?id=<%=((ApprenantsModel) list.get(i)).getId()%>">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                            <a href="/AdminServlet?field=apprenants&type=some&op=delete&id=<%=((ApprenantsModel) list.get(i)).getId()%>">
+                                <i class="fas fa-trash ml-2"></i>
+                            </a>
 
                         </td>
                     </tr>
