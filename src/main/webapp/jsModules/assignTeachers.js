@@ -6,6 +6,7 @@ document.querySelectorAll("li").forEach((promotion)=>{
         document.getElementById("invisibleInputForNakedEye").value = promotion;
         document.querySelectorAll("#invisible").forEach((input)=>{
             input.value +=" " + document.getElementById("assign_form_container2").getAttribute("data-user");
+            input.name += "chosenPromotion";
         })
 
     })

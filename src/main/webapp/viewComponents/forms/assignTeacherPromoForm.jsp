@@ -49,7 +49,7 @@
       <li class="block py-2 px-4 my-[1px] hover:bg-gray-200 w-full text-black bg-gray-300 border-b rounded-lg border-gray-200 cursor-pointer" class="promotion">
         <%= formateur.getNom()%> <%= formateur.getPrenom() %>
       </li>
-      <input class="" id="invisible" name="promotion" value="<%= formateur.getId() %>" />
+      <input hidden id="invisible" name="promotion" value="<%= formateur.getId() %>" />
       <%}%>
     </div>
     <input

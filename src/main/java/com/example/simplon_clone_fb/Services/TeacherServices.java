@@ -52,7 +52,7 @@ public class TeacherServices {
 
         //select the briefs
         List<BriefsModel> briefs = new daoBrief().selectAll(promoId);
-        System.out.println("dddd" + briefs.get(0).getPromoId());
+
         return briefs;
     }
 
@@ -95,4 +95,34 @@ public class TeacherServices {
     public BriefsModel getOneAssignment(String assignmentId){
         return new daoBrief().getOneElement(BriefsModel.class,Integer.parseInt(assignmentId));
     }
+
+    //Dealete assignment
+    public boolean deleteAssignment(String assignmentId){
+        return new daoBrief().deleteElement(BriefsModel.class,Integer.parseInt(assignmentId));
+    }
+
+    //Update assignment
+    public boolean updateAssignment(String title,String subTitle,String languages,String description,String startDate ,String deadline ,Integer teacherId,String assignmentId){
+        //get the promo of the teacher id
+        System.out.println("id now is :" + teacherId);
+        int promoId = new daoPromotions().selectPromotionOfTeacher(teacherId).getId();
+        System.out.println(promoId);
+        //Start adding the assignment
+        System.out.println("AdminServices.addPromotion");
+        BriefsModel brief = new BriefsModel();
+        brief.setTitre(title);
+        brief.setDescription(description);
+        brief.setLanguages(languages);
+        brief.setSubTitle(subTitle);
+
+        brief.setDateDebut(java.sql.Date.valueOf(startDate));
+        brief.setDateFin(java.sql.Date.valueOf(deadline));
+        //set the promo id and status
+        brief.setPromoId(promoId);
+        brief.setStatus(false);
+        brief.setId(Integer.parseInt(assignmentId));
+        return new daoBrief().update(brief);
+    }
+
+
 }

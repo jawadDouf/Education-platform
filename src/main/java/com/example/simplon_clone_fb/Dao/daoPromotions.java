@@ -8,7 +8,6 @@ public class daoPromotions extends databaseAccessObject<PromotionsModel>{
 
 
     public PromotionsModel selectPromotionOfTeacher(int teacherId){
-
         try{
             System.out.println("daoPromotions.selectPromotionOfTeacher");
             //Start the transaction
@@ -25,6 +24,5 @@ public class daoPromotions extends databaseAccessObject<PromotionsModel>{
             return null;
         }
     }
-
 
 }

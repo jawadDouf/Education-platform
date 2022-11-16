@@ -91,8 +91,14 @@
               <%};%>
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              <i class="fas fa-user-pen"></i>
-              <i class="fas fa-trash"></i>
+              <a href="../../viewComponents/forms/updateAssignment.jsp?id=<%=((BriefsModel) list.get(i)).getId()%>">
+              <i class="fas fa-pen"></i>
+              </a>
+              <a href="/TeacherServlet?field=briefs&type=some&op=delete&id=<%=((BriefsModel) list.get(i)).getId()%>">
+                <i class="fas fa-trash ml-2"></i>
+              </a>
+
+
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               <form action="/TeacherServlet?field=briefs&type=briefs&op=assign" method="post">
