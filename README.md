@@ -24,4 +24,4 @@ Learners can see the assigned briefs and can send the solution using a message a
 The instructor can create briefs and assign them to learners, and can also validate each learner's solution.
 
 
-Translated with www.DeepL.com/Translator (free version)
+
