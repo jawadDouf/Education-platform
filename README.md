@@ -1,5 +1,5 @@
 # Education_platform (SimplonLine clone)
-### This project is a clone of the popular [SimplonLine.co](https://simplon.co/) website, developed to replicate its functionalities .
+This project is a clone of the popular [SimplonLine.co](https://simplon.co/) website, developed to replicate its functionalities .
 
 #### Features and Roles :
 Is an education paltform where learners ,teachers and admins could manage their education life .
